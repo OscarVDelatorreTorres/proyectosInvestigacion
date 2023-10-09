@@ -19,18 +19,19 @@ header-includes: |
     \chead{Protocolo de proyecto de investigación científica ICTI-PICIR 2023}
     \rhead{}
     \fancyfoot[CO,CE]{Dr. Oscar V. De la Torre Torres FCCA UMSNH}
-    \fancyfoot[LE,RO]{Página: \thepage}
     \renewcommand{\footrulewidth}{0.4pt}
     \usepackage{rotating}
+    \fancyfoot[LE,RO]{Página: \thepage}
 output:
-  bookdown::pdf_document2:
-    toc: no
   bookdown::html_document2:
     toc: yes
     toc_depth: 5
+    toc_float: TRUE
   html_document:
     toc: yes
     toc_depth: 5
+  bookdown::pdf_document2:
+    toc: no
   word_document:
     toc: yes
     toc_depth: '5'

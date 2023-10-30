@@ -21,6 +21,8 @@ urlcolor: blue
 font: times new roman
 csl: "contaduria-y-administracion-unam-esp.csl"
 lang: "Es-Es"
+fig_width: 7 
+fig_height: 6
 ---
 
 
@@ -459,7 +461,7 @@ gantt1=ggplot() +
   labs(title="Figura 2. Planeación tentativa del proyecto de investigación.",
        x = "Tarea",
        y = "Fecha",
-       colour = "Actividad") 
+       colour = "Actividad")+theme(legend.position="right")
 
 gantt1
 ```
@@ -472,7 +474,7 @@ datos2=read.xlsx("presupuesto.xlsx",sheet="cronograma")
 datos2=datos2[,4:5]
 datatable(datos2,caption="Detalle de tareas a realizar en el proyecto de investigación conforme el diagrama de Gannt de la Figura 2",
           colnames = c("Nombre de tarea en diagrama Gannt"="Tarea","Descripción de la tarea"="TareaT"),
-          options=list(pageLength = nrow(datos2)))
+          options=list(pageLength = 7))
 ```
 
 

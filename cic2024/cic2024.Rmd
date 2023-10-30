@@ -1,0 +1,442 @@
+---
+title: "Algoritmos de inteligencia artificial bayesiana para la cobertura de los precios del aguacate, el limón, la zarzamora y la maíz producidos en el Estado de Michoacán por medio opciones agrícolas de las Bolsas de mercancías de Chicago y Nueva York provistas por SEGALMEX"
+author: |
+  | Dr. Oscar V. De la Torre Torres
+  | Facultad de Contaduría y Ciencias Administrativas 
+  | Universidad Michoacana de San Nicolás de Hidalgo
+output:
+  bookdown::html_document2:
+    toc: yes
+    toc_depth: 5
+    toc_float: yes
+  html_document:
+    toc: yes
+    toc_depth: 5
+    toc_float: yes
+bibliography: icti2023.bib
+link-citations: yes
+citecolor: blue
+linkcolor: blue
+urlcolor: blue
+font: times new roman
+csl: "contaduria-y-administracion-unam-esp.csl"
+lang: "Es-Es"
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+options(tinytex.verbose = TRUE)
+library(flextable)
+library(openxlsx)
+library(plotly)
+library(tibble)
+library(dplyr)
+library(bookdown)
+library(tidyr)
+library(plan)
+library(forcats)
+library(DT)
+```
+
+```{r logo1, echo=FALSE, out.width="20%", fig.align = 'center'}
+knitr::include_graphics("cic.png")
+```
+
+```{r logo3, echo=FALSE, out.width="20%", fig.align = 'center'}
+knitr::include_graphics("umsnh100a.jpg")
+```
+
+# (abstract) Resumen ejecutivo del proyecto
+
+En el presente proyecto de investigación se propone el desarrollo de un algoritmo de inteligencia artificial para la cobertura sintética para cubrir el precio de compra (venta) del precio nacional del aguacate Hass, el limon, la zarzamora y el maíz producidos en el Estado de Michoacán.
+
+Para desarrollar dicha cobertura sintética se propone replicar el esquema de precios de garantía de SEGALMEX en las que este organismo del Gobierno Federal adquiere coberturas del maíz, trigo y arroz en las bolsas de derivados de Chicago y Nueva York. Esto a fin de ofrecer una cobertura (precios de garantía) de dichas mercancías a los productores mexicanos. Partiendo de esta necesidad práctica (cobertura del precio del aguacate, limón, zarzamora y maíz), se propone en este proyecto de investigación el desarrollo y prueba de un algoritmo de inteligencia artificial que permita diseñar y seleccionar un portafolio óptimo de opciones de los principales futuros agrícolas de las bolsas de derivados de Chicago y Nueva York. 
+
+El objetivo fundamental del presente proyecto es demostrar la viabilidad material y factibilidad de los algoritmos para lograr las coberturas sintéticas que podrían diseñar SEGALMEX para ofrecer un precio de garantía del precio nacional del aguacate, el limon, la zarzamora y el maíz producidos en Michoacán.
+
+El presente proyecto se espera impacte en el desarrollo económico del Estado de Michoacán, así como en la soberanía y seguridad alimentaria en México (PRONACE de CONACyT).
+
+# Características del proyecto
+
+- **Periodo del proyecto**: 2 años (2024-205) con posible extensión a 3 (hasta 2026).
+- **Tipo de proyecto**: Ciencia aplicada.
+- **Encargado**: Dr. Oscar Valdemar De la Torre Torres (Profesor-investigador titular A de tiempo completo).
+- **Adscripción del proyecto**: Facultad de Contaduría y Ciencias Administrativas -UMSNH-.
+
+
+## Justificación del proyecto de investigación
+
+Como es de amplio conocimiento, una de las prioridades tanto del Gobierno Federal como Estatal es lograr una soberanía y seguridad alimentaria que haga a México (PRONACE de CONACyT) menos dependiente de las importaciones de productos agrícolas. Dentro de las principales acciones realizadas para este fin, se constituyó el organismo público descentralizado denominado Seguridad Alimentaria Mexicana (SEGALMEX). Esto con el Decreto de creación publicado el 18 de enero del 2019 en el Diario Oficial de la Federación o (DOF,2019). Dentro de sus actividades sustanciales se encuentran las siguientes:
+
+1. Promover la autosuficiencia alimentaria del país.
+2. Garantizar el abasto de alimentos básicos a la población, en especial a los sectores más vulnerables.
+3. Establecer mecanismos para regular el mercado de alimentos básicos.
+4. Promover la productividad agrícola y pecuaria.
+5. Fomentar la participación de los productores y consumidores en el sistema alimentario
+
+El que los productores de aguacate, limón, zarzamora y maíz del Estado de Michoacán puedan contar con un mecanismo de cobertura del precio del aguacate, limón, zarzamora y maíz permitiría dos objetivos:
+
+1. Que el nivel de ingresos de los productores de estos productos sea más constante o, al menos, estable, generando menor volatilidad en el nivel de generación de riqueza en sus zonas geográficas, así como una mejora en el índice de ingreso, dentro del índice de desarrollo humano. Esto tendría un impacto en el objetivo o actividad 4 de SEGALMEX previamente citada y en cuestiones de seguridad y violencia.
+
+2. Que el Gobierno Estatal, en este caso, el Federal puedan tener un mecanismo de cobertura del precio del aguacate, abonaría establecer mecanismos para regular el mercado de alimentos básicos.
+
+SEGALMEX puede ofrecer coberturas de precio y cosecha a pequeños y medianos productores de arroz, frijol, leche, maíz y trigo. Para lograr esto, el organismo se vale de la adquisición de coberturas del precio internacional de estas mercancías en la Bolsa de Derivados de Chicago (CBOT). En específico adquiere opciones que le permitan trasladar el riesgo del precio pactado al emisor de dichas coberturas, a efecto de cubrir el diferencial del precio pactado y el de mercado.
+
+Dado que el aguacate, el limón y la zarzamora no son mercancías o commoditties con amplia negociación y liquidez como son el maíz, el trigo o el arroz, no existe interés ni necesidad en el CBOT o del NYMEX de emitir coberturas (opciones) relacionadas a estos. Para poder solventar esta necesidad se pueden realizar coberturas sintéticas. Este tipo de coberturas se logra mediante un portafolio de futuros u opciones cuyo valor replique el precio de estas mercancía (aguacate, limón o zarzamora o maíz).
+
+El objetivo de este proyecto es diseñar y probar algoritmos de inteligencia artificial que permitan diseñar y administrar estas coberturas sintéticas del precio de estos 4 productos agrícolas michoacanos. Esto en pro de la soberanía alimentaria.
+
+## Beneficiarios del proyecto de investigación
+
+Los beneficiarios de este proyecto de investigación serán los productores y comercializadores de aguacate, limón, zarzamora y maíz del estado de Michoacán quienes, potencialmente, podrían contar con mecanismos de coberturas o precios de garantía sobre el aguacate que producen. Esto con la finalidad de reducir volatilidad en sus ingresos.
+
+De manera complementaria, el Gobierno del Estado de Michoacán se podría ver beneficiado en materia de ingresos por dos canales:
+
+1. A mayores beneficios de los productores y comercializadores de aguacate en Michoacán, mayor será la base tributaria que el Gobierno Estatal y Federal pueden tener. Esto impactará en una **adecuada adminsitración de riesgos financieros y reducción de la deuda de Michoacán** (objetivo expresado en el PLADIEM).
+2. Como resultado del deseo de participar en este programa de coberturas, el Gobierno Federal y el Gobierno Estatal podrán tener mayor evidencia documental de las ventas de aguacate que productores y empacadores podrán tener, al ser ingresos declarados aquellos que se están cubriendo con estas coberturas sintéticas.
+
+De una manera indirecta, **la población vulnerable en condiciones de pobreza y aquella población vulnerable por incidencias del crimen organizado pueden beneficiarse ya que una mayor producción de aguacate, así como una mayor estabilidad en el ingreso, permitirá impactar positivamente en el pilar de ingresos del índice de desarrollo humano o IDH [@PNUD1991] y, conforme lo ha demostrado Yoo [-@Yoo2022], a mayor producción (y mayor estabilidad en los ingresos) de aguacate, menor incidencia de homicidios y violencia (-0.65 \% menos homicidios por cada 100 toneladas de aguacate producidas).**
+
+##  Antecedentes
+
+El aguacate Hass, el limón, la zarzamora y el maíz son cuatro de los principales productos agrícolas en México y la principal fuente de ingresos en materia agrícola en el Estado de Michoacán de Ocampo. Según estimaciones de Ortiz et. al (2018) la producción de aguacate contribuye a 10\% del Producto Interno Bruto (PIB) de la entidad y al 4% del PIB nacional. De manera complementaria, representa el 45% de la producción agrícola y es considerado una de las principales fuentes de ingreso tanto en el la industria primaria como en la Entidad.
+
+Dada la importancia económica del aguacate (por citar un ejemplo de los 4 productos de interés en el proyecto), la producción de este fruto ha desencadenado beneficios e impactos negativos. En el caso de los beneficios, se observa una mejora importante en el nivel de índice de ingresos, al medir el desarrollo económico con el índice de desarrollo humano (PNUD,1991). Algunas asignaturas de desarrollo como una mejora del desarrollo en los pilares de salud, pobreza y educación, en los municipios productores de aguacate (Definidos estos como aquellos municipios que producen y/o exportan aguacate Hass por medio de personas físicas y morales afiliadas a la Asociación de Productores y Empacadores de Aguacate de Michoacán o APEAM).
+
+El presente proyecto de investigación busca demostrar que es factible que un organismo público, como Seguridad Alimentaria Mexicana (SEGALMEX), pueda diseñar y adquirir una cobertura sintética del aguacate, limón, zarzamora y maíz producidos en Michoacán. Esto a efecto de ofrecer subsidios a precios de garantía de este fruto. Tal como lo viene haciendo en los precios del maíz, trigo y arroz, a fin de lograr una mayor seguridad y soberanía alimentarias.
+
+Dado que no existe cobertura alguna de estas frutas (aguacate, limón y zarzamora), se busca demostrar que el algoritmo utilizado (y probado) para diseñar, con la ayuda de algoritmos de inteligencia artificla bayesiana, la cobertura sintética óptima, puede generar una mayor productividad en la industria del aguacate en el Estado de Michoacán. Dicha cobertura sintética, al igual que lo hace SEGALMEX con el maíz, trigo y arroz, consistirá en un portafolio de opciones de compra o venta de algunas mercancías agrícolas de las bolsas de derivados de Chicago (CBOT) y Nueva York (NYMEX): arroz, avena, azúcar, café, cacao, maíz trigo o grano de soya.
+Esta cobertura se diseñará con un algoritmo de inteligencia artificial bayesiana escrito para seleccionar óptimamente un portafolio de opciones, considerando dos escenarios:
+
+1. Un escenario con los datos históricos del precio nacional del aguacate Hass, zarzamora y limón michoacanos, comercializados en las principales centrales de abastos (precios extraídos diariamente de las bases de datos del Sistema Nacional de Información de mercados o SNIIM en lo sucesivo), así como históricos de los precios de los futuros y opciones de las mercancías agrícolas previamente citadas, mismas que cotizan en las dos bolsas de derivados de Chicago y Nueva York.
+
+2. El escenario anterior, incorporando el efecto que información económica y conductista tiene sobre el comportamiento de los precios estudiados. En específico, el sentimiento que se puede extraer del texto de noticias en Internet y redes sociales. El fin de este escenario es incorporar dicho sentimiento en el comportamiento de los precios, el diseño de la cobertura sintética (portafolio de opciones) y en el proceso de toma de decisiones de cobertura.
+
+Dentro de las pruebas o simulaciones a realizar, se probará si el uso de estas coberturas sintéticas del precio del aguacate teóricamente ofrecidas por SEGALMEX permiten ingresos más estables para los productores y comercializadores de aguacate, limón, zarzamora y maíz en Michoacán.
+
+De manera complementaria, el presente proyecto busca complementar y abonar a los esfuerzos del Consejo Nacional de Ciencia y Tecnología (CONACyT) y el Gobierno del Estado de Michoacán, a efectos de con las pruebas realizadas en este proyecto, poder probar que las coberturas sintéticas del precio del aguacate contribuyan al logro de la soberanía y seguridad alimentaria. Logro que también forma parte de las labores de promoción de la ciencia y tecnología plasmadas en la Ley orgánica de la UMSNH.
+
+Los beneficiarios de este proyecto de investigación serán los productores y comercializadores de aguacate, limón, zarzamora y maíz del estado de Michoacán quienes, potencialmente, podrían contar con mecanismos de coberturas o precios de garantía sobre el aguacate que producen. Esto con la finalidad de reducir volatilidad en sus ingresos.
+
+De manera complementaria, el Gobierno del Estado de Michoacán se podría ver beneficiado en materia de ingresos por dos canales:
+
+1. A mayores beneficios de los productores y comercializadores de aguacate en Michoacán, mayor será la base tributaria que el Gobierno Estatal y Federal pueden tener. Esto impactará en una **adecuada adminsitración de riesgos financieros y reducción de la deuda de Michoacán** (objetivo expresado en el PLADIEM).
+2. Como resultado del deseo de participar en este programa de coberturas, el Gobierno Federal y el Gobierno Estatal podrán tener mayor evidencia documental de las ventas de aguacate que productores y empacadores podrán tener, al ser ingresos declarados aquellos que se están cubriendo con estas coberturas sintéticas.
+
+El propio SEGALMEX podría ser un beneficiario final de este proyecto de investigación al poderse desarrollar algoritmos y aplicaciones de inteligencia artifical para la cobertura de los precios de estos 4 productos agrícolas.
+Finalmente y de una manera indirecta, la población vulnerable en condiciones de pobreza y aquella población vulnerable por incidencias del crimen organizado pueden beneficiarse ya que una mayor producción de aguacate, así como una mayor estabilidad en el ingreso, permitirá impactar positivamente en el pilar de ingresos del índice de desarrollo humano o IDH (PNUD,1991) y, conforme lo ha demostrado Yoo (2022), a mayor producción (y mayor estabilidad en los ingresos) de aguacate, menor incidencia de homicidios y violencia (-0.65 % menos homicidios por cada 100 toneladas de aguacate producidas).
+
+El que los productores de aguacate, limón, zarzamora y maíz del Estado de Michoacán puedan contar con un mecanismo de cobertura del precio del aguacate, limón, zarzamora y maíz permitiría dos objetivos:
+
+1. Que el nivel de ingresos de los productores de estos productos sea más constante o, al menos, estable, generando menor volatilidad en el nivel de generación de riqueza en sus zonas geográficas, así como una mejora en el índice de ingreso, dentro del índice de desarrollo humano. Esto tendría un impacto en el objetivo o actividad 4 de SEGALMEX previamente citada y en cuestiones de seguridad y violencia como se comentó en el apartado de [Objetivos y acciones, conforme al PLADIEM y la convocatoria, que el presente proyecto busca lograr](#objetivosPLADIEM).
+2. Que el Gobierno Estatal, en este caso, el Federal puedan tener un mecanismo de cobertura del precio del aguacate, limón, zarzamora y maíz producido en Michoacán abonaría al logro de la actividad u objetivo 2: establecer mecanismos para regular el mercado de alimentos básicos.
+
+SEGALMEX puede ofrecer coberturas de precio y cosecha a pequeños y medianos productores de arroz, frijol, leche, maíz y trigo [@DOF2022]. Para lograr esto, el organismo se vale de la adquisición de coberturas del precio internacional de estas mercancías en la Bolsa de Derivados de Chicago (CBOT). En específico adquiere opciones que le permitan trasladar el riesgo del precio pactado al emisor de dichas coberturas, a efecto de que le cubra el diferencial del precio. Con del presente proyecto de investigación, se busca tener un desarrollo informático (y tecnológico) que permita a SEGALMEX y a los productores de aguacate, limón, zarzamora y maíz tener mecanismos de toma de decisiones y coberturas del precio de su producción.
+Es por ello que la necesidad de contar con algoritmos de inteligencia artificial bayesiana para este fin puede ser de amplia utilidad para lograr los fines de cobertura de precios deseados.
+
+Para poder ofrecer las coberturas mediante su programa de precios de garantía para los casos del maíz, arroz y trigo, SEGALMEX cubre su riesgo con la adquisición de coberturas en el CBOT. Con esto, el organismo puede ofrecer esta garantía a los productores. 
+
+Actualmente la bolsa de futuros de mercancías  de Chicago (CBOT) es propiedad de un grupo de bolsas propiedad de la bolsa de mercancías de Chicago (*Chicago Mercantile Exchange* o CME). Dentro de las bolsas que posee este conglomerado, también se encuentra la bolsa de mercancías de Nueva York (New York Mercantile Exchange o NYMEX). Esta también negocía futuros y opciones de mercancías agricolas como son el café arábiga, azúcar refinada, cacao (cocoa) y jugo de naranja (por hablar de algunas de las coberturas de mercancías agrícolas comestibles). Estas coberturas pueden ser de interés para los fines que se exponen a continuación.
+
+Dado que el aguacate, limón, zarzamora y maíz producido en Michoacán no son mercancías o *commoditties* con amplia negociación y liquidez como son el maíz, el trigo o el arroz, no existe interés ni necesidad en el CBOT o del NYMEX de emitir coberturas (futuros u opciones) relacionadas al aguacate Hass u otra variedades. Para poder solventar esta necesidad se pueden realizar **coberturas sintéticas**. Este tipo de coberturas se logra mediante un portafolio de futuros u opciones cuyo comportamiento en su valor replique el valor o mercancía (en este caso el precio nacional del aguacate procedente de Michoacán). 
+
+Esto se logra con técnicas de administración de valores y pasivos (conocida como *Asset-liability management*) en donde se determina un índice o precio de referencia cuyo comportamiento debe ser replicado con un portafolio de valores [@Scherer2007;@Ziemba2003;@Maginn2007b;@Waring2004b].
+
+## Problema general de investigación 
+
+Dado que SEGALMEX u otro organismo público Estatal o Federal podrían implementar un esquema de precios de cobertura del precio del aguacate, limón, zarzamora y maíz producidos en Michoacán en el Estado de Michoacán y debido a que no existe un futuro y opción que cubra el precio, así como alguna institución financiera que desee cubrir el riesgo de fluctuaciones en el precio de este producto, se tiene el siguiente problema general de investigación a resolver:
+
+**¿Es posible diseñar y adquirir un portafolio de coberturas (opciones) de las bolsa de mercancías de Chicago (CBOT) y de Nueva York (NYMEX) para cubrir el precio de compra o venta del aguacate, limón, zarzamora y maíz producidos en el Estado de Michoacán?**
+
+### Problemas particulares de investigación{#problemasParticulares}
+
+El resolver este problema conlleva dos problemas particulares a resolver:
+
+1. Resolver el problema **¿Tiene el comportamiento del precio de los futuros agrícolas maíz, trigo, arroz, soya, café, azúcar, jugo de naranja, cocoa) una relación estadística con el precio nacional del aguacate producido en Michoacán?**
+
+2. Resolver **¿Si se adquiere un portfolio de opciones de compra (venta) del arroz, avena, azúcar, café, cacao, maíz trigo o grano de soya se puede cubrir exitosamente el precio de compra (venta) de un productor (comercializador) de aguacate producido en Michoacán?**
+
+El hacer, como se verá en el apartado de [Metodología](#metodologia), se utilizarán y simularán técnicas de selección óptima de portafolios para replicar el comportamiento del precio del aguacate michoacano. El uso de las mismas requiere que se incorpore el efecto que algunas variables financieras y conductistas pueden tener tanto en el precio del aguacate como en los futuros agrícuolas a utilizar en el portafolio que fungirá como la cobertura sintética del anterior. Dentro de las variables financieras entrarán en el análisis algunas métricas de especulación e incertidumbre como son la razón de especulación de Kim [-@Kim2005], el índice de volatilidad implícita de las acciones de los Estados Unidos, el tipo de cambio mexicano (pesos por dólar de los EEUU) y el diferencial de tasas de corto y largo plazo en EEUU y México.
+
+En relación a los factores conductistas, se busca hacer una medición del sentimiento que tanto a nivel de mercado agrícola real como en los mercados agrícolas de Chicago y Nueva York se tiene. Al inicio de los presentes antecedentes se mencionaron algunos impactos positivos y negativos relativos a la producción de aguacate en Michoacán. Esto ha generado algunas controversias y discusiones académicas en medios que han repercutido en la imagen de la producción michoacana de aguacate. 
+
+De manera complementaria, el sentimiento que consimudores y productores tienen en relación a la situación financiera o económica en México y el mundo repercute en el intercambio y en el precio del aguacate comercializado. Dicho esto, se busca incorporar la medición en el sentimiento (negativo o positivo) que las personas pueden tener. Sentimiento que puede repercutir en el precio y comercialización de aguacate, situación que debe incorporarse en el modelo de selección óptima del portafolio de coberturas que busca cubrir el precio del aguacate.
+
+Dicho esto se desconoce si el sentimiento de los agentes económicos mexicanos y de Estados Unidos tiene un impacto en el precio del aguacate y su cobertura. En específico, no se sabe si el sentimiento negativo (o de incertidumbre) en materia económica o financiera (medido por medio del texto de noticias o el texto de publicaciones en redes sociales) tiene un impacto en el precio del aguacate, las coberturas agrícolas y en el portafolio de coberturas utilizado como respaldo para cubrir el precio del aguacate.
+
+
+Como consecuencia, el tercer, cuarto y quinto problemas particulares de investigación a resolver serían
+
+3. **¿Tiene un impacto el sentimiento negativo medido en noticias o redes sociales en el precio del aguacate, limón, zarzamora y maíz producido en Michoacán en Michoacán?**
+4. **¿Tiene un impacto el sentimiento negativo medido en noticias o redes sociales en el precio de los futuros del arroz, avena, azúcar, café, cacao, maíz trigo o grano de soya?**
+5. **Si se incorpora el sentimiento negativo de noticias o redes sociales en el proceso de selección óptima del portafolio de coberturas para el precio del aguacate, limón, zarzamora y maíz producido en Michoacán ¿Se obtendrán mejores resultados que el portafolio que no incorpora este sentimiento?**
+
+De resolverse el problema general de investigación y los 5 particulares, el Gobierno Federal o Estatal (por medio de SEGALMEX u otro organismo público) estarían en posición de brindar coberturas al precio de un producto agrícola que actualmente no la tiene. Esto al trasladar el riesgo de fluctuación de precios al portafolio de coberturas (opciones) compradas. Como se verá en el apartado de [Entregables comprometidos](#Entregables) y de demostrarse como exitoso el empleo del algoritmo de coberturas desarrollado, se podrá presentar y publicar un breve documento técnico con el mecanismo o procedimiento de coberturas que podría implementar SEGALMEX o algún organismo similar.
+
+Esto se hará en un sitio web interactivo con los resultados actualizados (de manera automática) en el [sitio web del Dr. Oscar De la Torre Torres](https://oscardelatorretorres.com).
+
+Dentro de las pruebas o simulaciones a realizar, se probará si el uso de estas coberturas sintéticas del precio del aguacate, limón, zarzamora y maíz producidos en Michoacán, teóricamente ofrecidas por SEGALMEX permiten ingresos más estables para los productores y comercializadores de estas mercancías.  Esto llevará, como consecuencia, que se tenga una mayor entrada de ingresos en esta industria y se cumplan con dos de los objetivos de prosperidad económica del Gobierno del Estado de Michoacán de Ocampo en su Plan de Desarrollo Integral de Michoacán (PLADIEM):
+
+1. **Promover el crecimiento con bienestar y progreso con justicia**: Esto se logrará al poder desarrollar un algoritmo y procedimientos que permitan cubrir el precio del aguacate Hass producido en la Entidad. Actualmente el Gobierno Federal, por medio de SEGALMEX ofrece incentivos para precios de garantía en maíz, trigo y arroz. Esto al cubrir el riesgo de fluctuación de precios de estas mercancías al adquirir coberturas en la bolsa de derivados de Chicago. Al no existir un futuro del precio del aguacate, entidades como SEGALMEX no pueden ofrecer precios de garantía de otras frutas u hortalizas (como el aguacate Hass, limón y zarzamora) por lo que el presente proyecto de investigación busca explorar la posibilidad de utilizar un algoritmo de diseño de una cobertura sintética. Esta cobertura se logrará con el diseño de un portafolio óptimo de opciones que permita replicar, lo más aproximado posible, el precio del aguacate Hass michoacano. Situación que permitiría ofrecer precios de garantía a los productores y comercializadores de aguacate.
+2. **Fortalecer la gestión de riesgos financieros y disminuir la deuda pública por habitante**: Esto se logrará al permitir un esquema de garantía de precios de compra o venta del aguacate Hass, limón, zarzamora y maíz, lo que incentivaría a una mejor base de ingresos y una mayor fiscalización de los productores y comercializadores de aguacate Hass. Al tener estos ingresos más estables, su nivel de ingreso mejoraría. Esto permitirá una mayor prosperidad y bienestar en las regiones donde laboran. **Para citar un ejemplo de cómo una mayor productividad del aguacate, limón, zarzamora o maíz generaría mejores niveles de bienestar e incluso seguridad^[Implementar políticas públicas que promuevan la reconciliación y la justicia, especialmente en comunidades afectadas por la violencia y el conflicto [@Michoacan2021]], se tiene el trabajo de Yoo [-@Yoo2022]. Este autor demuestra que por cada 100 toneladas de aguacate producidas, la tasa de homicidios se reduce en 0.65 \% en las zonas productoras de aguacate**. De manera complementaria a lo anterior, este autor estimó que **la industria del aguacate en Michoacán genera 310,000 empleos directos y 78,000 indirectos**.
+
+De manera complementaria, el presente proyecto busca complementar y abonar a los esfuerzos del Consejo Nacional de Ciencia y Tecnología (CONACyT) y el Gobierno del Estado de Michoacán, a efectos de con las pruebas realizadas en este proyecto, poder probar que las coberturas sintéticas del precio del aguacate contribuyan al logro de la soberanía y seguridad alimentaria. Logro que forma parte dentro de las metas de lograr **una soberanía alimentaria** está claramente planteado en los Programas Nacionales Estratégicos CONACyT (**PRONACES**), así como a las labores de promoción de la ciencia y tecnología plasmadas en la Ley orgánica de la UMSNH.
+
+Finalmente, en relación a los objetivos y acciones del PLADIEM en materia de Ciencia, Tecnología e Innovación, el presente proyecto busca contribuir a la **acción 2.2.4.8 "Fomentar el desarrollo científico y tecnológico, a través de la innovación y la investigación aplicada"**, del eje 2. Así como a las acciones **3.2 "“Impulsar la competitividad del Estado y la integración de los territorios con infraestructura, equipamiento, tecnologías digitales e iniciativas estratégicas, incluyentes, sostenibles, eficientes, accesibles y seguros, basadas en una visión de desarrollo regional"** y **3.5.1.2 "Impulsar la investigación e innovación aplicada a sectores productivos mediante la cooperación interinstitucional."**
+
+# Hipótesis general y específicas de la investigación{#Hipotesis}
+
+En consistencia a los problemas de investigación planteados, ahora se presentan las hipótesis general y particulares de la investigación.
+
+## Hipótesis general{#hipotesisGeneral}
+
+En congruencia al problema general de investigación planteado se establece la siguiente hipótesis general de investigación a demostrar:
+
+**$H_0:$ Se puede cubrir exitosamente el precio nacional de compra (venta) del aguacate, limón, zarzamora y maíz producidos en Michoacán por medio de una cobertura sintética formada con un portafolio de opciones del arroz, avena, azúcar, café, cacao, maíz trigo o grano de soya cotizadas en las bolsas de derivados de Chicago (CBOT) y Nueva York (NYMEX).**
+
+Para demostrar esta hipótesis y como se verá en el apartado de la [Metodología](#Metologia) se simulará el impacto financiero que tendrá en un productor (comercializador) la cobertura del precio de venta (compra) del aguacate, limón, zarzamora y maíz michoacano. Para esto se simularán los ingresos acumulables mensuales de un productor (comercializador) teóricos en dos escenarios:
+
+1. El escenario base en el que no existirá cobertura alguna.
+2. El escenario experimental en el que se emplea el algoritmo de coberturas del precio del aguacate.
+
+Si el ingreso acumulado en diferentes periodos de tiempo desde el año 2000 (Periodo de apertura de la frontera de los EEUU al aguacate michoacano) es mayor en el segundo escenario, se verificará la hipótesis general de trabajo del presente proyecto de investigación.
+
+## Hipótesis específicas de investigación{#hipotesisEspecificas}
+
+En congruencia a los 5 problemas de investigación planteados en [la sección correspondiente](#problemasParticulares) se tienen las siguientes hipótesis particulares a demostrar:
+
+1. **$H_1:$ El comportamiento del precio nacional del aguacate, limón, zarzamora y maíz producidos en Michoacán tiene una relación de largo plazo (relación cointegrante) con los precios de los futuros agrícolas del maíz, trigo, arroz, soya, café, azúcar, jugo de naranja y cocoa**.
+2. **$H_2:$ El comprar una cobertura sintética por medio de un portafolio de opciones de compra (venta) de los precios de los futuros del arroz, avena, azúcar, café, cacao, maíz trigo o grano de soya permite cubrir exitosamente el precio de compra (venta) de un productor (comercializador) de aguacate, limón, zarzamora y maíz producidos en Michoacán**
+3. **$H_3:$ El sentimiento negativo medido en las noticias o publicaciones de redes sociales tiene un impacto estadísticamente significativo en el precio nacional del aguacate, limón, zarzamora y maíz producidos en Michoacán: a mayor sentimiento negativo, menor es el precio de compra de estos productos agrícolas**
+4. **$H_4:$ El sentimiento negativo medido en las noticias o publicaciones de redes sociales tiene un impacto estadísticamente significativo en el precio de los futuros del arroz, avena, azúcar, café, cacao, maíz trigo o grano de soya.**
+5. **$H_5:$ El incorporar el sentimiento negativo de noticias o redes sociales en el diseño y compra de la cobertura sintética por medio de un portafolio de opciones de compra (venta) de los precios de los futuros del arroz, avena, azúcar, café, cacao, maíz trigo o grano de soya permite cubrir exitosamente el precio de compra (venta) de un productor (comercializador) de aguacate, limón, zarzamora y maíz producidos en Michoacán**
+
+La primer hipótesis, de cumplirse, demostrará que el precio nacional del aguacate, limón, zarzamora y maíz producidos en Michoacán tiene una relación de largo plazo con el precio de los ocho futuros agrícolas con los que se busca realizar la cobertura sintética de dicho precio. De cumplirse esta hipótesis, se facilitaría el modelo de selección óptima de portafolios empleando alguna técnica más simple. En caso contrario, de no existir una relación de largo plazo, se pueden modelar relaciones en el corto (1 a 2 meses) para diseñar el portafolio óptimio que fungirá como cobertura sintética del precio del aguacate. Esto empleando redes neuronales bayesianas.
+
+Las hipótesis segunda y quinta son la base del presente trabajo de investigación ya que la segunda busca demostrar que un modelo de selección óptima de un portafolio de opciones en los ocho futuros agrícolas de interés permitiría tener un modelo cuantitativo para diseñar y ofrecer una cobertura sintética del precio del aguacate, limón, zarzamora y maíz producidos en Michoacán. La quinta hipótesis es una extensión de la segunda. Al demostrar dicha hipótesis se demostraría que el incorporar el sentimiento que las personas tienen en relación a la actividad económica y financiera tiene un impacto benéfico para diseñar la cobertura sintética. Dicho esto, permitiría tener un modelo que incorpore el sentimiento y otras cuestiones conductistas de los agentes económicos, mismos que se podrían aproximar por medio del sentimiento negativo encontrado en el texto de medios de comunicación y redes sociales.
+
+Las hipótesis tercera y cuarta son hipótesis particulares de trabajo y de necesidad para saber si existe una relación de largo plazo entre el sentimiento negativo medido en textos de noticias y publicaciones de redes sociales (que es cambiante a lo largo del tiempo), en relación a las condiciones económicas y financieras.
+
+
+# Objetivo general y específicos de la investigación{#Objetivo}
+
+## Objetivo general del proyecto de investigación{#objetivoGeneral}
+En el presente apartado se expondrán los objetivos de investigación. La exposición se hará en la misma línea que el apartado anterior para exponer los objetivos como una consecuencia necesaria de las hipótesis a demostrar. De manera análoga, se presentan estos objetivos para poder materializarlos como metas cuantificables y verificables de los resultados logrados con el presente trabajo de investigación.
+
+El objetivo general del presente trabajo de investigación, en consistencia a la hipótesis general planteada, es:
+
+**Demostrar que se puede cubrir el precio nacional de compra (venta) del aguacate, limón, zarzamora y maíz producidos en Michoacán por medio de una cobertura sintética formada con un portafolio de opciones del arroz, avena, azúcar, café, cacao, maíz trigo o grano de soya cotizadas en las bolsas de derivados de Chicago (CBOT) y Nueva York (NYMEX).**
+
+## Objetivos específicos del proyecto de ivestigación{#objetivosEspecificos}
+
+De manera consecuente, los objetivos particulares son los siguientes:
+
+1. **Demostrar que el precio nacional del aguacate, limón, zarzamora y maíz producidos en Michoacán tiene una relación de largo plazo (relación cointegrante) con los precios de los futuros agrícolas el maíz, trigo, arroz, soya, café, azúcar, jugo de naranja y cocoa**.
+
+2. **Probar que el empleo de una cobertura sintética realizada por medio de un portafolio de opciones de compra (venta) de los precios de los futuros del arroz, avena, azúcar, café, cacao, maíz trigo o grano de soya permite cubrir exitosamente el precio de compra (venta) de un productor (comercializador) de aguacate, limón, zarzamora y maíz producidos en Michoacán**.
+
+3. **Medir si existe una relación inversa y estadísticamente significativa entre el sentimiento negativo, medido con el texto las noticias o publicaciones de redes sociales, y el precio nacional del aguacate, limón, zarzamora y maíz producidos en Michoacán**.
+
+4. **Medir si existe una relación inversa y estadísticamente significativa entre el sentimiento negativo, medido con el texto las noticias o publicaciones de redes sociales, y el precio de los futuros del arroz, avena, azúcar, café, cacao, maíz trigo o grano de soya**.
+
+5. **Probar que el empleo del sentimiento negativo, medido con el texto las noticias o publicaciones de redes sociales, en una cobertura sintética realizada por medio de un portafolio de opciones de compra (venta) de los precios de los futuros del arroz, avena, azúcar, café, cacao, maíz trigo o grano de soya permite cubrir exitosamente el precio de compra (venta) de un productor (comercializador) de aguacate, limón, zarzamora y maíz producidos en Michoacán**.
+
+Estos objetivos a cumplirse se podrán medir por medio de las metas a detallar a continuación.
+
+# Metas del proyecto de investigación{#Metas}
+
+Para materializar los objetivos plasmados en el apartado anterior, se tienen las siguientes metas. La forma de exponerlas sera detallando las mismas y relacionándolas con los objetivos (general o particulares) que buscan cumplir y, por ende, materializar en resultados cuantificables y verificables.
+
+- Meta 1: Demostrar que el empleo del algoritmo para diseñar la cobertura sintética (seleccionar el portafolio óptimo de opciones de futuros agrícolas) permite tener una rentabilidad mayor que el omitir su uso y dejar que los ingresos del productor o comercializador de aguacate dependan de las fluctuaciones del mercado nacional. Con esto, se daría cumplimiento material al objetivo e hipótesis generales, así como a las hipótesis y objetivos particulares 2 y 5.
+
+- Meta 2: Desarrollar una base de datos actualizable de manera diaria que compile la información historica de los ocho futuros agrícolas que se emplearán en la cobertura sintética y que ayudarán a cubrir el precio nacional del aguacate, limón, zarzamora y maíz producidos en Michoacán.
+
+El cumplimiento de esta meta permitirá tener la infraestructura informática necesaria poder simular y actualizar el valor de un productor y comercializador teóricos que puedan cubrir, mensualmente, el precio unitario de su producción de aguacate, limón, zarzamora o maíz. 
+
+- Meta 3: Desarrollar una base de datos actualizable que, de las bases de datos del Sistema Nacional de Información de Mercados [@SNIIM2023] de la Secretaría de Economía, extraiga los precios diarios del aguacate Hass, limón, zarzamora y maíz producidos en Michoacán, registrado en las principales centrales de abasto del país y calcule el precio promedio diario.
+
+De manera análoga a la meta anterior, la presente meta permitirá la demostración de las hipótesis general y particulares 2 y 5 y coadyuvará al logro del objetivo general y particulares 2 y 5 del presente proyecto de investigación.
+
+Con el precio promedio diario del aguacate producido en Michoacán se tendrá, con esta base de datos y la de la meta anterior, una infraestructura informática para poder lograr los objetivos de este proyecto y dejar la infraestructura necesaria para el desarrollo de proyectos análogos y extensiones del presente.
+
+- Meta 4: Desarrollar códigos de simulación que se ejecuten de manera mensual para determinar la cobertura sintética idónea, empleando los ocho futuros agrícolas de interés y el precio del aguacate, limón, zarzamora y maíz producidos promedio calculados con las metas 2 y 3 previas. Los resultados históricos que se logren en la simulación permitirán tener registros de las ganancias que se lograrían en los tres escenarios de interés: 1) el escenario en el que el productor o comercializador no accedan a ningún tipo de cobertura, 2) el escenario en el que se compra la cobertura sintética sin incorporar el efecto del sentimiento negativo leído en noticias y redes sociales, y 3) el escenario en el que la cobertura sintética se diseña incorporando el sentimiento negativo e información de mercado.
+
+- Meta 5: Desarrollar aplicaciones en línea que permitan publicar los resultados actualizados en el sitio web personal del Dr. Oscar De la Torre Torres. Esto para su acceso gratuito por parte de la comunidad científica y profesional interesada en los temas. El lograr esta meta permitiría tener actualizados y públicos los resultados de las simulaciones realizadas en el presente proyecto. Un ejemplo de las aplicaciones y modelos informáticos que se desarrollan de manera diaria se puede consultar en la siguiente [aplicación en línea del sitio web del dr. Oscar De la Torre torres](https://www.oscardelatorretorres.com/markov1-mx)^[Esta aplicación se desarrolló al amparo de otros proyectos de investigación apoyados por la Coordinación de la Investigación Científica de la Universidad Michoacana de San Nicolás de Hidalgo para realizar coberturas de la inversión de una o un inversionista, al pronosticar la probabilidad de estar en un periodo de alta volatilidad en los mercados.]
+
+El cumplimiento de esta meta permitirá tener un código que ejecute, mensualmente, el algoritmo de selección óptima que permita realizar la cobertura sintética del precio nacional del aguacate, limón, zarzamora y maíz producidos en Michoacán y que permita publicar los resultados actualizados.
+
+- Meta 6: Publicar los resultados de las simulaciones realizadas ante la comunidad científica afín a los agronegocios y a la Administración financiera. Esto implica publicación en artículos de revistas científicas, así como participaciones en ponencias de congresos de investigación.
+
+# Entregables comprometidos{#Entregables}
+
+Como resultado de los objetivos planteados en el presente proyecto de investigación, así como de las metas que de los mismos surgen, se presentan los siguientes entregables:
+
+1. Publicación de al menos dos artículos en una revista científica indizada en Scopus o la Web of Science. El compromiso, dados los tiempos de financiamiento del proyecto, es tener en proceso de revisión o, preferentemente aceptado, el artículo. Para lograr esto, es que se planteará el publicar el artículo en alguna revista académica indizada a Scopus o la Web of Science que opere en el esquema de *open access*. Esto permitirá que los tiempos de revisión y editoriales sean más cortos. Ante esto, como se verá en el apartado del [desglose financiero](#Desglose), se contempla el pago de publicaciones de artículos.
+2. La publicación y actualización periódica de los resultados de las simulaciones en una aplicación en línea en el sitio web del Dr. Oscar De la Torre Torres. Esto requerirá, como se verá en el [desglose financiero](#Desglose).
+3. El desarrollo y publicación de una función en R y una en Python que permita acceder a los precios históricos de las principales frutas y hortalizas monitoreadas por el SNIIM. Actualmente el SNIIM solo funciona con una interfaz visual en su sitio web. Con este entregable se pretende que exista una función que permita a más investigadoras e investigadores acceder fácilmente a las bases de datos del SNIIM con esta función. El objetivo es publicarla como una función de fuente abierta y acceso gratuito. La misma se publicará en los repositorios de GitHub y de PyPI.
+4. El apoyo al desarrollo de 1 tesis de doctorado. Actualmente se tiene en curso 1 tesis de doctorado que buscan relacionar el sentimiento negativo y positivo en las noticias y redes sociales con los precios del maíz y del café. Esto para desarrollar algoritmos de coberturas de estas mercancías con opciones de las bolsas de Chicago y Nueva York. Es decir, desarrollar algoritmos que permitan a SEGALMEX y a los productores o comercializadores de aguacate determinar los momentos de cobertura necesarios. Por los tiempos de duración del proyecto de investigación propuesto, no se logrará la titulación de alguna de estas 2 tesis doctorales, debido a que los 2 sustentantes les falta 1.5 y 3.5 años para terminar su tesis y plan de estudios en el [Doctorado en Administración de la Facultad de Contadudía y Ciencias Administrativas de la UMSNH](https://www.fcca.umich.mx/doctorado/). A pesar de esto, el presente proyecto apoyará a los requerimientos de infraestructura informática para el logro de resultados en estas dos tesis de investigación:
+
+  - **Factores de índices de sentimiento de mercado que inciden en la estimación de precios de referencia del maíz blanco en México y su cobertura con opciones de la Bolsa de derivados de Chicago a través de un algoritmo de toma de decisiones con precios de garantía de SEGALMEX**. Sustentante: M.C. Rodolfo Adrían López Torres (Doctorado en Administración FCCA-UMSNH). Generación 2021-2025.
+
+5. Ponencias en al menos 4 congresos de investigación.
+
+# Metodología{#Metodologia}
+
+## Diseño metodológico del proyecto de investigación
+
+Para demostrar la hipótesis general y particulares, se realizará una simulación de eventos discretos en la que, de manera mensual, se diseñará la cobertura sintética del precio del aguacate con las opciones de mercancías agrícolas de las bolsas de Chicago y Nueva York. Para esto, el proyecto de investigación hará la siguiente secuencia de pruebas:
+
+1. Se calcularán los precios promedio diario del aguacate, limón, zarzamora y maíz producidos en Michoacán, desde el año 1997 a la fecha de conclusión de proyecto. Se selecciona el año 1997 por que coincide con los años de apertura de la frontera de los Estados Unidos a las exportaciones de aguacate michoacano y coincide con la fundación de la Asociación de Productores y Empacadores de Aguacate de Michoacán (APEAM).
+2. Se extraerán, de APIS y bases de datos en internet, noticias históricas relativas al mercado del aguacate michoacano, así como las relativas a los futuros de las mercancías de interés en las bolsas de Chicago y Nueva York (arroz, avena, azúcar, café, cacao, maíz trigo o grano de soya). Con estas noticias se calcularán índices de sentimiento que serán de 3 tipos: optimista (positivo), neutro o pesimista (negativo). Esto se analizará por computadora con algoritmos y técnicas de ciencia de datos.
+3. Se harán pruebas de cointegración (relación estadística de largo plazo) entre el precio promedio del aguacate michoacano con los precios de los futuros de mercancías agrícolas de las bolsas de Chicago y Nueva York. De no ser exitosas, se utilizarán redes neuronales bayesianas para medir la relación de corto plazo.
+4. Se harán pruebas de cointegración entre el precio promedio del aguacate, limón; zarzamora y maíz producidos en Michoacán, el histórico de variables económicas y los sentimiento de noticias calculado en las pruebas del numeral. En caso de no existir cointegración, se utilizarán redes neuronales bayesianas para poder establecer una relación de corto plazo que permita pronosticar el precio del aguacate ante cambios de las variables económicas o de sentimiento calculadas previamente.
+5. Se harán pruebas de cointegración entre los precios de los futuros agrícolas de interés para la cobertura sintética con el histórico de variables económicas, de sus respectivos mercados y los índices de sentimiento calculados en las pruebas del numeral 2. De no existir una relación de largo plazo, también se utilizarán redes neuronales bayesianas para establecer la relación entre estas variables económicas y de sentimiento con los rendimientos esperados de estos futuros.
+6. Con los pronósticos logrados con los modelos cuantitativos (redes neuronales o modelos de cointegración) de las pruebas del numeral 4, se correrá una simulación de eventos discretos con periodicidad mensual. En cada mes se pronosticará, conforme a la información económica y de sentimiento vigente en el mes $t$, el movimiento del precio del aguacate, limón, zarzamora y maíz producidos en Michoacán. Si es de baja (alza) se simulará la creación de una cobertura sintética del aguacate empleando el método cuantitativo que se describe en la sección [método para diseñar la cobertura sintética del precio del aguacate](#metodoCoberturaSintetica) siguiente. Una vez determinada la baja (alza) se simulará la venta de esta cobertura o precio de garantía para el productor (comercializador). Con esta, el productor (comercializador) cubrirá o tendrá garantía de su precio de venta (compra) para el siguiente mes. Esta cobertura, teóricamente, la ofrecerá SEGALMEX en las simulaciones. Si las pruebas o simulaciones realizadas demuestran que el productor (comercializador) tiene una mayor rentabilidad que si no hubiera adquirido estas coberturas, se habrá cumplido la hipótesis particular 2.
+7. Se realizarán las simulaciones previas, con la diferencia de que el diseño de la cobertura sintética incorpora el efecto que variables económicas y de sentimiento de mercado tienen en el método cuantitativo. Básicamente se sustituirán los rendimientos esperados del portafolio de opciones con los estimados en las pruebas cuantitativas del numeral 5. Si con estas simulaciones se logra demostrar que se tiene una mayor rentabilidad al emplear este segundo tipo de cobertura sintética (en comparación a la cobertura anterior o a no hacer cobertura alguna), se cumplirá la hipótesis particular 5.
+
+### Método para diseñar la cobertura sintética del precio del aguacate{#metodoCoberturaSintetica}
+
+El método del diseño de la cobertura sintética óptima consiste en emplear modelos de selección óptima de portafolios en los que se minimiza el *error de seguimiento* o **tracking error** [@Waring2004b; @Ziemba2003; @Maginn2007b]. El error de seguimiento se determina con la diferencia que el rendimiento o variación porcentual de cada futuro agrícola de interés para formar la cobertura agrícula $r_i$ tiene respecto al rendimiento o variación porcentual del precio del aguacate, limón, zarzamora o maíz producidos en Michoacán $r_A$ (según sea el caso de la simulación):
+
+\begin{equation}
+\varepsilon_i=r_i-r_A
+(\#eq:eq1)
+\end{equation}
+
+Cada diferencia de cada futuro agrícola $\varepsilon_i$ tendrá su pronóstico mensual de rendimiento esperado para el siguiente mes $E(\varepsilon_i)$ y una matriz de varianzas y covarianzas $\Sigma$ de las diferencias de rendimiento de cada futuro agrícola.
+
+El objetivo de la cobertura sintética es determinar en porcentaje o nivel de inversión $\omega_i$ (acomodado en un vector de niveles de inversión$\mathbf{w=[\omega_i]}$) que se debe invertir (comprar) en las opciones de cada futuro agrícola que permitirán reducir al máximo la diferencia entre la variación porcentual o rendimiento del portafolio de la cobertura síntética $r_p$ con el precio del aguacate, limón, zarzamora y maíz producidos en Michoacán $r_A$. Esto se logrará al resolver el siguiente problema de optimización [@Markowitz1956; @Black1972]:
+
+
+\begin{equation}
+\begin{array}{cc}
+\text{arg min } & w \Sigma w \\
+\text{s.a.} & \omega_i\geq 0 \\
+& \sum \omega_i =100 \%
+\end{array}
+\end{equation}
+
+
+Al resolver este problema de optimización se determinará el nivel óptimo $\mathbf{w}*$ de inversión en las opciones de cada uno de los futuros agrícolas a utilizar como parte de la cobertura sintética. El objetivo, en términos teóricos para las pruebas a realizar, es lograr que SEGALMEX compre esta cobertura sintética para un volumen importante de productores (comercalizadores) de aguacate, limón, zarzamora y maíz. Esto para ofrecerles precios de garantía en el precio de compra (venta). Tal como hace para cubrir el precio del maíz, arroz y trigo, al momento de redactar este protocolo de investigación.
+
+## Infraestructura con la que se cuenta actualmente para realizar el proyectos de investigación.
+
+Para lograr las metas planteadas en el apartado de [Metas del proyecto de investigación](#Metas), así como el de [Entregables comprometidos](#Entregables) que llevarán a la consecución de los objetivos del presente proyecto, se cuenta con infraestructura tecnológica suficiente, la cual se ha adquirido con proyectos de investigación previos como son los de Apoyo a nuevo PTC de PRODEP-SEP o los propios proyectos de investigación financiados, desde el año 2016, al sustentante de este proyecto. Esto último por parte de la Coordinación de la Investigación Científica (CIC) de la Universidad Michoacana de San Nicolás de Hidalgo (UMSNH). La infraestructura es la siguiente:
+
+1. Computadora Mac Pro con procesador Intel Xeon de 3.5 GHz y 6 núcleos, 16 GB de memoria RAM, tarjeta gráfica AMD FirePro de 3GB y 120GB de disco duro en estado sólido. Esta computadora es la que se utiliza para hacer la parte más larga y amplia de las simulaciones de este proyecto de investigación y otros que le han antecedido. Los resultados de las simulaciones realizadas con esta computadora se actualizan, de manera diaria, en la siguiente computadora.
+2. Computadora iMac con procesador Intel Core de 1.5 GHz y 2 núcleos, 18 GB de memoria RAM, tarjeta gráfica Intel Graphics de 3de 1.5 GB y 120GB de disco duro en estado sólido. Esta computadora es la que actualizará, de manera diaria o mensual (Según sea el caso) los datos de las simulaciones del presente proyecto.
+3. Lenguajes de programación R y Python executados tanto en Rstudio como en Jupiter Networks. Esto para programar y ejecutar los CRONES que, de manera automática, actualizan las simulaciones realizadas.
+4. Una licencia de Shiny apps para la publicación de las aplicaciones interactivas en línea con los resultados de las simulaciones previas. Esta se paga actualmente con recursos propios del Dr. Oscar V. De la Torre Torres (la CIC de la UMSNH actualmente no le puede apoyar con este rubro al cambiar las reglas de operación federales, relativas a los recursos financieros de los proyectos de la CIC) y se pretende financiar las mismas con recursos del presente proyecto.
+5. Una licencia de las bases de datos económicos, financieras y de futuros Refinitiv Eikon y Economatica que actualmente paga el Dr. Oscar V. De la Torre Torres con recursos propios (la CIC de la UMSNH actualmente no le puede apoyar con este rubro al cambiar las reglas de operación federales, relativas a los recursos financieros de los proyectos de la CIC). Se pretende financiar estas bases de datos con los recursos del presente proyecto de investigación.
+
+Para conocer a mayor detalle la infraestructura que se tiene, se presenta la Figura 1 con la arquitectura informática con la que se cuenta para la ejecución material del presente proyecto de investigación.
+
+```{r figura1, echo=FALSE, out.width="90%", fig.align = 'center', fig.cap="Arquitectura informática para las simulaciones a realizar"}
+knitr::include_graphics("logicaSimuladores.png")
+
+```
+
+En la misma se puede apreciar la finalidad que tienen las bases de datos que se contratarán y se especifica cómo se publicarán, se actualizarán y pondrán a libre consulta los resultados de las pruebas y simulaciones realizadas. 
+
+Se puede notar que, a través de aplicaciones interactivas incrustadas en el sitio web del Dr. Oscar V. De la Torre Torres, se puede acceder a los resultados de interés.
+
+Ya que se presentó la metodología para realizar el presente proyecto de investigación propuesto, así como la infraestructura material con la que se cuenta y la que se requiere con el financiamiento de este proyecto, se hará un detalle del desglose financiero del mismo.
+
+# Desglose financiero{#Desglose}
+
+En el Cuadro 1 siguiente se detallan los rubros a financiar para la ejecución del proyecto de investigación. Como se puede apreciar, se solicita un monto total de \$ 152,334.00, de los cuales 76.769\%  está destinado al rubro de software especializado que es la adquisición de licencias temporales de aplicaciones informáticas en línea y APIs que permitirán acceder a las bases de datos de información financiera y de noticias históricas necesarias para las simulaciones.
+
+```{r cuadro1, echo=FALSE, error=FALSE, warning=FALSE, message=FALSE}
+prespuesto1=read.xlsx("presupuesto.xlsx",sheet="presupuesto")
+
+dat_summary <- (summarize(prespuesto1, across(Monto2024, ~ sum(.x, na.rm = TRUE)), across(Monto2025, ~ sum(.x, na.rm = TRUE)), across(TotalRubro, ~ sum(.x, na.rm = TRUE))) %>% 
+  add_column(rubro = "Montos a financiar por año y en total de proyecto", .before = TRUE))
+
+prespuesto1=rbind(prespuesto1,dat_summary)
+prespuesto1$Monto2024=paste0("$",formatC(prespuesto1$Monto2024,format="f",big.mark = ",",digits = 2))
+prespuesto1$Monto2025=paste0("$",formatC(prespuesto1$Monto2025,format="f",big.mark = ",",digits = 2))
+prespuesto1$TotalRubro=paste0("$",formatC(prespuesto1$TotalRubro,format="f",big.mark = ",",digits = 2))
+
+set_flextable_defaults(
+  font.family = "Times New Roman",
+  font.size = 11,
+  border.color = "#CCCCCC",
+  line_spacing = 1.3
+)
+
+ft=flextable(prespuesto1)%>%autofit%>%bold(i=c(8),j = c("rubro", "Monto2024","Monto2025","TotalRubro"), bold = TRUE)%>% 
+  hline(i = 7,j= c("rubro", "Monto2024","Monto2025","TotalRubro"))
+ft=set_header_labels(ft,
+                  rubro="Rubro a financiar en el proyecto",
+                  Monto2025="Monto solicitado para 2025",
+                  Monto2025="Monto solicitado para 2025",
+                  TotalRubro="Total por rubro en el proyecto")
+ft=set_caption(ft, "Presupuesto general solicitado para el proyecto de investigación.")
+ft
+```
+
+A continuación se detalla el presupuesto solicitado por cada rubro especificado en el cuadro 1.
+
+# Cronograma tentativo de actividades{#Cronograma}
+
+En la Figura 2 se presenta el diagrama de Gannt con el cronograma (tentativo) de actividades a realizar durante el proyecto. 
+
+```{r gantt, echo=FALSE, error=FALSE, warning=FALSE, message=FALSE}
+
+datos=read.xlsx("presupuesto.xlsx",sheet="cronograma")
+datos$Inicio=as.Date(datos$Inicio,origin="1899-12-30")
+datos$Fin=as.Date(datos$Fin,origin="1899-12-30")
+
+df=data.frame(id=1:nrow(datos),
+                      Task=datos$Actividad,
+                      Start=datos$Inicio,
+                      Duration=datos$Fin-datos$Inicio,
+                      Resource=datos$Actividad)
+
+datos$Inicio=as.Date(datos$Inicio,origin="1899-12-30")
+datos$Fin=as.Date(datos$Fin,origin="1899-12-30")
+df=data.frame(Actividad=datos$Actividad,
+                      Tarea=datos$Tarea,
+                      start=datos$Inicio,
+                      end=datos$Fin)
+
+df <- df %>% 
+  mutate(start = as.Date(start), end = as.Date(end))
+df_tidy <- df %>% 
+  gather(key=date_type, value=date, -Tarea, -Actividad)
+
+gantt1=ggplot() +
+  geom_line(data=df_tidy, mapping=aes(x=fct_rev(fct_inorder(Tarea)), y=date, color=Actividad), size=10) +
+  geom_hline(yintercept=as.Date("2023-08-27"), colour="black", linetype="dashed") +
+  coord_flip() +
+  labs(title="Figura 2. Planeación tentativa del proyecto de investigación.",
+       x = "Tarea",
+       y = "Fecha",
+       colour = "Actividad") 
+
+gantt1
+```
+
+A continuación, se detallan las tareas ya que, por cuestiones de espacio en la gráfica, solo se pudieron codificar sus nombres abreviados.
+
+
+```{r cuadro2, echo=FALSE, message=FALSE, error=FALSE, warning=FALSE}
+datos2=read.xlsx("presupuesto.xlsx",sheet="cronograma")
+datos2=datos2[,4:5]
+datatable(datos2,caption="Detalle de tareas a realizar en el proyecto de investigación conforme el diagrama de Gannt de la Figura 2",
+          colnames = c("Nombre de tarea en diagrama Gannt"="Tarea","Descripción de la tarea"="TareaT"),
+          options=list(pageLength = 7))
+```
+
+
+# Consideraciones finales
+
+Se espera cumplir con las expectativas de impacto de generación del conocimiento y desarrollo tecnológico con impacto regional y nacional que la CIC desee tener con esta [convocatoria 2024](https://cic.umich.mx/convocatorias/institucionales/4746-convocatoria-2024.html).
+
+A su vez, se agradece la atención y tiempo dedicado a revisar la presente propuesta.
+
+Para cualquier necesidad o consideración, me reitero a sus órdenes en el sitio web [https://oscardelatorretorres.com](https://oscardelatorretorres.com) o en mi correo institucional [oscar.delatorre.torres@umich.mx](oscar.delatorre.torres@umich.mx).
+
+# Bibliografía citada en esta propuesta de investigación
+

@@ -81,9 +81,9 @@ knitr::include_graphics("umsnh100a.jpg")
 
 **Folio ICTI:** ICTI-PICIR23-086
 
-**Estado:** APROBADO Y EN PROCESO DE FORMALIZACIÓN
+**Estado:** APROBADO Y EN PROCESO DE EJECUCIÓN
 
-(**Aproación ICTI:**)[https://icti.michoacan.gob.mx/picir-2023/]
+**Aprobación ICTI:** [Liga de la aprobación](https://icti.michoacan.gob.mx/picir-2023/)
 
 # Resumen ejecutivo
 

@@ -59,20 +59,21 @@ knitr::include_graphics("umsnh100a.jpg")
 
 **Modalidad:** Proyectos de investigación financiados por la Coordinación de la Investigación Científica de la IUMSNH en **modalidad de 2 años** susceptble a extenderse a 3 años.
 
+**Periodo del proyecto**: 2 años (2024-205) con posible extensión a 3 (hasta 2026).
+
+**Tipo de proyecto**: Ciencia aplicada.
+
+**Encargado**: Dr. Oscar Valdemar De la Torre Torres (Profesor-investigador titular A de tiempo completo).
+
+**Adscripción del proyecto**: Facultad de Contaduría y Ciencias Administrativas -UMSNH-.
+
+
 # (abstract) Resumen ejecutivo del proyecto
 
 En el presente proyecto de investigación se propone el desarrollo de un algoritmo de inteligencia artificial de una cobertura sintética para cubrir el precio de compra (venta) del precio nacional del aguacate, el limón, la zarzamora y el maíz producidos en el Estado de Michoacán.
 Para desarrollar dicha cobertura sintética se propone replicar el esquema de precios de garantía de SEGALMEX en las que este organismo del Gobierno Federal adquiere coberturas del maíz, trigo y arroz en las bolsas de derivados de Chicago y Nueva York. Esto a fin de ofrecer una cobertura (precios de garantía) de estas 4 mercancías a los productores michoacanos. Partiendo de esta necesidad práctica (cobertura del precio del aguacate, limón, zarzamora y maíz), se propone en este proyecto de investigación el desarrollo y prueba de un algoritmo de inteligencia artificial bayesiana que permita diseñar y seleccionar un portafolio óptimo de opciones de los principales futuros agrícolas de las bolsas de derivados de Chicago y Nueva York. 
 El objetivo fundamental del presente proyecto es demostrar la viabilidad material y factibilidad de los algoritmos para lograr las coberturas sintéticas que podría diseñar SEGALMEX para ofrecer un precio de garantía del precio nacional del aguacate, el limón, la zarzamora y el maíz producidos en Michoacán.
 El presente proyecto se espera impacte en el desarrollo económico del Estado de Michoacán, así como en la soberanía y seguridad alimentaria en México (PRONACE de CONACyT).
-
-# Características del proyecto
-
-- **Periodo del proyecto**: 2 años (2024-205) con posible extensión a 3 (hasta 2026).
-- **Tipo de proyecto**: Ciencia aplicada.
-- **Encargado**: Dr. Oscar Valdemar De la Torre Torres (Profesor-investigador titular A de tiempo completo).
-- **Adscripción del proyecto**: Facultad de Contaduría y Ciencias Administrativas -UMSNH-.
-
 
 ## Justificación del proyecto de investigación
 

@@ -49,6 +49,16 @@ knitr::include_graphics("cic.png")
 knitr::include_graphics("umsnh100a.jpg")
 ```
 
+# Datos generales del proyecto
+
+**Folio CIC:** 18178
+
+**Estado:** APROBADO Y EN PROCESO DE EJECUCIÓN
+
+**Aprobación CIC-UMSNH:** [Liga de la aprobación](https://cic.umich.mx/proyectos-de-investigacion/cic/72-2024/proyectos-aprobados-2024.html)
+
+**Modalidad:** Proyectos de investigación financiados por la Coordinación de la Investigación Científica de la IUMSNH en **modalidad de 2 años** susceptble a extenderse a 3 años.
+
 # (abstract) Resumen ejecutivo del proyecto
 
 En el presente proyecto de investigación se propone el desarrollo de un algoritmo de inteligencia artificial de una cobertura sintética para cubrir el precio de compra (venta) del precio nacional del aguacate, el limón, la zarzamora y el maíz producidos en el Estado de Michoacán.

@@ -85,7 +85,7 @@ knitr::include_graphics("umsnh100a.jpg")
 
 **Aprobación ICTI:** [Liga de la aprobación](https://icti.michoacan.gob.mx/picir-2023/)
 
-**Informe final del proyecto 2024**: [Liga del informe final](https://icti.michoacan.gob.mx/picir-2023/)
+**Informe final del proyecto 2024**: [Liga del informe final en el año 2024](https://oscarvdelatorretorres.github.io/proyectosInvestigacion/icti2023/informe2024.html)
 
 # Resumen ejecutivo
 

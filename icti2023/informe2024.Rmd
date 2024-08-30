@@ -72,7 +72,7 @@ knitr::include_graphics("umsnh100a.jpg")
 
 # Datos generales del proyecto
 
-**Propuesta del proyecto**: [Presione esta liga para consultar la propuesta del proyecto](https://www.oscardelatorretorres.com/icti2023)
+**Propuesta del proyecto**: [Presione esta liga para consultar la propuesta del proyecto](https://oscarvdelatorretorres.github.io/proyectosInvestigacion/icti2023/)
 
 **Título del proyecto:** Algoritmo para la cobertura del precio nacional del aguacate Hass producido
   en el Estado de Michoacán por medio coberturas agrícolas de las Bolsas de mercancías de Chicago y Nueva York provistas por SEGALMEX

@@ -1,0 +1,87 @@
+---
+title: Evidencia de bases de Datos
+author: |
+  | Dr. Oscar V. De la Torre Torres
+  | Facultad de Contaduría y Ciencias Administrativas 
+  | Universidad Michoacana de San Nicolás de Hidalgo
+  
+header-includes: |
+    \usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \lhead{}
+    \chead{Evidencia de bases de datos del proyecto de investigación científica ICTI-PICIR-2023-00086}
+    \rhead{}
+    \fancyfoot[CO,CE]{Dr. Oscar V. De la Torre Torres FCCA-UMSNH}
+    \renewcommand{\footrulewidth}{0.4pt}
+    \usepackage{rotating}
+    \fancyfoot[LE,RO]{Página: \thepage}
+output:
+  bookdown::html_document2:
+    toc: yes
+    toc_depth: 5
+    toc_float: TRUE
+  bookdown::pdf_document2:
+    toc: no
+  html_document:
+    toc: yes
+    toc_depth: 5
+  word_document:
+    toc: yes
+    toc_depth: '5'
+bibliography: icti2023.bib
+link-citations: yes
+citecolor: blue
+linkcolor: blue
+urlcolor: blue
+font: times new roman 
+csl: "contaduria-y-administracion-unam-esp.csl"
+lang: "Es-Es"
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+options(tinytex.verbose = TRUE)
+library(flextable)
+library(openxlsx)
+library(plotly)
+library(tibble)
+library(dplyr)
+library(bookdown)
+library(tidyr)
+library(plan)
+library(forcats)
+```
+
+\begin{center}
+\textbf{1 página de lectura a continuación}
+\end{center}
+
+```{r logo1, echo=FALSE, out.width="20%", fig.align = 'center'}
+knitr::include_graphics("picir.png")
+```
+
+```{r logo3, echo=FALSE, out.width="20%", fig.align = 'center'}
+knitr::include_graphics("umsnh100a.jpg")
+```
+
+\newpage 
+
+\setcounter{tocdepth}{6}
+\tableofcontents
+
+\newpage 
+
+# Evidencia de bases de datos
+
+Estimada Dra. Alejandra Ochoa Zarzosa,
+
+En las siguientes ligas, podrá encontrar la evidencia (en línea) de las bases de datos compiladas y creadas ya sea en aplicaciones web o en el observatorio de inteligencia de mercado que se logró con el financiamiento del proyecto de investigación científica ICTI-PICIR-2023-00086 "Algoritmo para la cobertura del precio nacional del aguacate Hass producido en el Estado de Michoacán por medio coberturas agrícolas de las Bolsas de mercancías de Chicago y Nueva York provistas por SEGALMEX".
+
+  - [Applicación de las simulaciones de la cobertura del precio del aguacate](https://www.oscardelatorretorres.com/coberturaprecioaguacateicti2024)
+  - [Observatorio de inteligencia de mercado de la Facultad de Contaduría y Ciencias Administrativas de la UMSNH](https://app1.observatorio-fcca-umich.com/web/login). Favor de utilizar el correo odelatorre\@umich.mx y el password UMSNH2024 para acceder a la plataforma.
+
+
+**Dr. Oscar V. De la Torre Torres** 
+
+**Facultad de Contaduría y Ciencias Administrativas**
+
+**Universidad Michoacana de San Nicolás de Hidalgo**

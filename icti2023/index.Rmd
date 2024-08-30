@@ -85,6 +85,8 @@ knitr::include_graphics("umsnh100a.jpg")
 
 **Aprobación ICTI:** [Liga de la aprobación](https://icti.michoacan.gob.mx/picir-2023/)
 
+**Informe final del proyecto 2024**: [Liga del informe final](https://icti.michoacan.gob.mx/picir-2023/)
+
 # Resumen ejecutivo
 
  En el presente proyecto de investigación se propone el desarrollo de una cobertura sintética para cubrir el precio de compra (venta) del precio nacional del aguacate Hass producido en el Estado de Michoacán. Para desarrollar dicha cobertura sintética se propone replicar el esquema de precios de garantía de SEGALMEX en las que este organismo del Gobierno Federal adquiere coberturas del maíz, trigo y arroz en las bolsas de derivados de Chicago y Nueva York. Esto a fin de ofrecer una cobertura (precios de garantía) de dichas mercancías a los productores mexicanos. Partiendo de esta necesidad práctica (cobertura dle precio del aguacate), se propone en este proyecto de investigación el desarrollo y prueba de un algoritmo que permita diseñar y seleccionar un portafolio óptimo de opciones de los principales futuros agrícolas de las bolsas de derivados de Chicago y Nueva York. 

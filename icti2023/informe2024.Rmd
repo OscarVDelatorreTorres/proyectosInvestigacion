@@ -1,28 +1,23 @@
 ---
-title: Algoritmo para la cobertura del precio nacional del aguacate Hass producido
-  en el Estado de Michoacán por medio coberturas agrícolas de las Bolsas de mercancías de Chicago y Nueva York provistas por SEGALMEX
+title: Algoritmo para la cobertura del precio nacional del aguacate Hass producido en el Estado de Michoacán por medio coberturas agrícolas de las Bolsas de mercancías de Chicago y Nueva York provistas por SEGALMEX (Informe in extenso final del proyecto)
 author: |
   | Dr. Oscar V. De la Torre Torres
   | Facultad de Contaduría y Ciencias Administrativas 
   | Universidad Michoacana de San Nicolás de Hidalgo
-abstract: |
- En el presente proyecto de investigación se propone el desarrollo de una cobertura sintética para cubrir el precio de compra (venta) del precio nacional del aguacate Hass producido en el Estado de Michoacán. Para desarrollar dicha cobertura sintética se propone replicar el esquema de precios de garantía de SEGALMEX en las que este organismo del Gobierno Federal adquiere coberturas del maíz, trigo y arroz en las bolsas de derivados de Chicago y Nueva York. Esto a fin de ofrecer una cobertura (precios de garantía) de dichas mercancías a los productores mexicanos. Partiendo de esta necesidad práctica (cobertura dle precio del aguacate), se propone en este proyecto de investigación el desarrollo y prueba de un algoritmo que permita diseñar y seleccionar un portafolio óptimo de opciones de los principales futuros agrícolas de las bolsas de derivados de Chicago y Nueva York. 
- **El objetivo fundamental del presente proyecto es demostrar la viabilidad material y factibilidad de las coberturas sintéticas que podría diseñar SEGALMEX para ofrecer un precio de garantía del precio nacional del aguacate Hass producido en Michoacán**.
- Como parte de los retos científicos a resolver en este proyecto, se tiene que demostrar que la cobertura sintética es una replica lo suficientemente aproximada del precio del aguacate Hass. Sobre todo, se debe demostrar que la productividad de la industria del de aguacate Hass producido en Michoacán se incrementa si adquiere (con SEGALMEX o algún organismo afín) la cobertura sintética del precio de venta (compra) del aguacate.
- El presente proyecto se espera impacte en el desarrollo económico del Estado de Michoacán. En concreto, en el índice de ingreso y la generación de productividad en la Entidad. Esto al mejorar el perfil de ingresos de productores y comercializadores de aguacate, así como una adecuada formación de precios y de mercado. De manera complementaria, se busca contribuir a las metas y **objetivos de seguridad y soberanía alimentaria2** establecidos en el **Plan Nacional de Desarollo 2018-2024** de la República Mexicana, así como con los objetivos de prosperidad económica de **Promover el crecimiento con bienestar y progreso con justicia** y **Fortalecer la gestión de riesgos financieros** y del **PLADIEM** del estado de Michoacán de Ocampo.
- Con los resultados de este proyecto se espera que se fortalezcan la soberanía y seguridad alimentarias. Esto al tener mejores esquemas de cobertura del precio del aguacate producido en la Entidad y al lograr que los productores y comercializadores generen mayores ingresos, lo cual redunda en mayor empleo y bienestar en la industria del aguacate.
   
 header-includes: |
     \usepackage{fancyhdr}
     \pagestyle{fancy}
     \lhead{}
-    \chead{Protocolo de proyecto de investigación científica ICTI-PICIR 2023}
+    \chead{Informe de resultados y entregable del proyecto de investigación científica ICTI-PICIR-2023-00086}
     \rhead{}
-    \fancyfoot[CO,CE]{Dr. Oscar V. De la Torre Torres FCCA UMSNH}
+    \fancyfoot[CO,CE]{Dr. Oscar V. De la Torre Torres FCCA-UMSNH}
     \renewcommand{\footrulewidth}{0.4pt}
     \usepackage{rotating}
     \fancyfoot[LE,RO]{Página: \thepage}
 output:
+  bookdown::pdf_document2:
+    toc: no
   bookdown::html_document2:
     toc: yes
     toc_depth: 5
@@ -30,8 +25,6 @@ output:
   html_document:
     toc: yes
     toc_depth: 5
-  bookdown::pdf_document2:
-    toc: no
   word_document:
     toc: yes
     toc_depth: '5'
@@ -79,6 +72,8 @@ knitr::include_graphics("umsnh100a.jpg")
 
 # Datos generales del proyecto
 
+**Propuesta del proyecto**: [Presione esta liga para consultar la propuesta del proyecto](https://www.oscardelatorretorres.com/icti2023)
+
 **Título del proyecto:** Algoritmo para la cobertura del precio nacional del aguacate Hass producido
   en el Estado de Michoacán por medio coberturas agrícolas de las Bolsas de mercancías de Chicago y Nueva York provistas por SEGALMEX
 
@@ -102,14 +97,14 @@ En el presente documento de formato libre, me permito detallarle la propuesta, p
 
 Iniciaré con el breve resumen de mi proyecto para contextualizarle en mi informe.
 
-## Resumen ejecutivo
+## Resumen del proyecto de investigación
 
 En el presente proyecto de investigación se propone el desarrollo de una cobertura sintética para cubrir el precio de compra (venta) del precio nacional del aguacate Hass producido en el Estado de Michoacán. Para desarrollar dicha cobertura sintética se propone replicar el esquema de precios de garantía de SEGALMEX en las que este organismo del Gobierno Federal adquiere coberturas del maíz, trigo y arroz en las bolsas de derivados de Chicago y Nueva York. Esto a fin de ofrecer una cobertura (precios de garantía) de dichas mercancías a los productores mexicanos. Partiendo de esta necesidad práctica (cobertura dle precio del aguacate), se propone en este proyecto de investigación el desarrollo y prueba de un algoritmo que permita diseñar y seleccionar un portafolio óptimo de opciones de los principales futuros agrícolas de las bolsas de derivados de Chicago y Nueva York. 
-**El objetivo fundamental del presente proyecto es demostrar la viabilidad material y factibilidad de las coberturas sintéticas que podría diseñar SEGALMEX para ofrecer un precio de garantía del precio nacional del aguacate Hass producido en Michoacán**.
-Como parte de los retos científicos a resolver en este proyecto, se tiene que demostrar que la cobertura sintética es una replica lo suficientemente aproximada del precio del aguacate Hass. Sobre todo, se debe demostrar que la productividad de la industria del de aguacate Hass producido en Michoacán se incrementa si adquiere (con SEGALMEX o algún organismo afín) la cobertura sintética del precio de venta (compra) del aguacate.
-El presente proyecto se espera impacte en el desarrollo económico del Estado de Michoacán. En concreto, en el índice de ingreso y la generación de productividad en la Entidad. Esto al mejorar el perfil de ingresos de productores y comercializadores de aguacate, así como una adecuada formación de precios y de mercado. De manera complementaria, se busca contribuir a las metas y **objetivos de seguridad y soberanía alimentaria2** establecidos en el **Plan Nacional de Desarollo 2018-2024** de la República Mexicana, así como con los objetivos de prosperidad económica de **Promover el crecimiento con bienestar y progreso con justicia** y **Fortalecer la gestión de riesgos financieros** y del **PLADIEM** del estado de Michoacán de Ocampo.
-Con los resultados de este proyecto se espera que se fortalezcan la soberanía y seguridad alimentarias. Esto al tener mejores esquemas de cobertura del precio del aguacate producido en la Entidad y al lograr que los productores y comercializadores generen mayores ingresos, lo cual redunda en mayor empleo y bienestar en la industria del aguacate.
-
+ **El objetivo fundamental del presente proyecto es demostrar la viabilidad material y factibilidad de las coberturas sintéticas que podría diseñar SEGALMEX para ofrecer un precio de garantía del precio nacional del aguacate Hass producido en Michoacán**.
+ Como parte de los retos científicos a resolver en este proyecto, se tiene que demostrar que la cobertura sintética es una replica lo suficientemente aproximada del precio del aguacate Hass. Sobre todo, se debe demostrar que la productividad de la industria del de aguacate Hass producido en Michoacán se incrementa si adquiere (con SEGALMEX o algún organismo afín) la cobertura sintética del precio de venta (compra) del aguacate.
+ El presente proyecto se espera impacte en el desarrollo económico del Estado de Michoacán. En concreto, en el índice de ingreso y la generación de productividad en la Entidad. Esto al mejorar el perfil de ingresos de productores y comercializadores de aguacate, así como una adecuada formación de precios y de mercado. De manera complementaria, se busca contribuir a las metas y **objetivos de seguridad y soberanía alimentaria2** establecidos en el **Plan Nacional de Desarollo 2018-2024** de la República Mexicana, así como con los objetivos de prosperidad económica de **Promover el crecimiento con bienestar y progreso con justicia** y **Fortalecer la gestión de riesgos financieros** y del **PLADIEM** del estado de Michoacán de Ocampo.
+ Con los resultados de este proyecto se espera que se fortalezcan la soberanía y seguridad alimentarias. Esto al tener mejores esquemas de cobertura del precio del aguacate producido en la Entidad y al lograr que los productores y comercializadores generen mayores ingresos, lo cual redunda en mayor empleo y bienestar en la industria del aguacate.
+ 
 ## Beneficiarios del proyecto de investigación
 
 Los beneficiarios de este proyecto de investigación serán los productores y comercializadores de aguacate del estado de Michoacán quienes, potencialmente, podrían contar con mecanismos de coberturas o precios de garantía sobre el aguacate que producen. Esto con la finalidad de reducir volatilidad en sus ingresos.
@@ -182,44 +177,115 @@ El mismo se logra gracias a los resultados cuya publicación esté en proceso de
 En base a lo anterior, se detallan las metas planteadas en la [propuesta del proyecto de investigación](https://www.oscardelatorretorres.com/icti2023). En la misma exposición se manifiesta su logro correspondiente:
 
 - Meta 1: Demostrar que el empleo del algoritmo para diseñar la cobertura sintética (seleccionar el portafolio óptimo de opciones de futuros agrícolas) permite tener una rentabilidad mayor que el omitir su uso y dejar que los ingresos del productor o comercializador de aguacate dependan de las fluctuaciones del mercado nacional. 
-**Respuesta al logro de esta meta:** Con los resultados logrados, se aprecia que emplear
+**Respuesta al logro de esta meta:** Con los resultados logrados, se aprecia que emplear el algoritmo de **minimum tracking error** permite replicar el precio del aguacate Hass michoacano con un portafolio de futuros del café y el cacao. Al lograrse esto, se puede utilizar el mismo para cubrir el precio del citado aguacate y así cubrir el riesgo de ingreso de productores o comercializadores. Con esto, se logra que utlizar dicho algoritmo lleve a un mejor nivel de ingreso.
 
 - Meta 2: Desarrollar una base de datos actualizable de manera diaria que compile la información historica de los ocho futuros agrícolas que se emplearán en la cobertura sintética y que ayudarán a cubrir el precio nacional del aguacate producido en el Estado de Michoacán.
-
-
+**Respuesta al logro de esta meta:** La meta se ha logrado debido a que se tiene una applicación en línea que se actualiza con precios del aguacate Hass extraidos de las bases de datos del Sistema NAcional de Información de Mercados (SNIIM) de la Secretaría de Economía. Esta aplicación, a su vez, presenta los resultados de la cobertura sintética. dicha aplicación web, producto del patrocinio del ICTI a este proyecto, se puede consultar en la [siguiente URL del sitio web del Dr. De la Torre Torres](https://www.oscardelatorretorres.com/coberturaprecioaguacateicti2024). En dicha aplicación web se cita el financiamiento de este proyecto.
 
 - Meta 3: Desarrollar una base de datos actualizable que, de las bases de datos del Sistema Nacional de Información de Mercados [@SNIIM2023] de la Secretaría de Economía, extraiga los precios diarios del aguacate Hass originario del Estado de Michoacán, registrado en las principales centrales de abasto del país y calcule el precio promedio diario.
-
-De manera análoga a la meta anterior, la presente meta permitirá la demostración de las hipótesis general y particulares 2 y 5 y coadyuvará al logro del objetivo general y particulares 2 y 5 del presente proyecto de investigación.
-
-Con el precio promedio diario del aguacate producido en Michoacán se tendrá, con esta base de datos y la de la meta anterior, una infraestructura informática para poder lograr los objetivos de este proyecto y dejar la infraestructura necesaria para el desarrollo de proyectos análogos y extensiones del presente.
+**Respuesta al logro de esta meta:** La meta se ha logrado con 2 entregables. El primero es la [applicación web que presenta los resultados actualizados de las simulaciones de la cobertura del preciod el aguacate](https://www.oscardelatorretorres.com/coberturaprecioaguacateicti2024). El segundo de estos es una aplicación web de un observatorio de inteligencia de mercado que se está desarrollando en la Facultad de Contaduría y Ciencias Administrativas de la UMSNH. El mismo se desarrollo y publicó en las instancias de servicios de nube en digital server, así como con las bases de datos contratadas con este proyecto. Para acceder al mismo [se puede presionar esta liga del observatorio](https://app1.observatorio-fcca-umich.com/web/login). Favor de utilizar el correo odelatorre\@umich.mx y el password UMSNH2024 para acceder a la plataforma. 
+El objetivo de este observatorio, junto con la aplicación en línea anterior, es que, como se comprometió en la propuesta de proyecto, se tenga un repositorio gratuito, actualizado y accesible de la información de interés para la comunidad científica y profesional interesada en los temas de agronegocios y de coberturas de precios de productos agrícolas.
 
 - Meta 4: Desarrollar códigos de simulación que se ejecuten de manera mensual para determinar la cobertura sintética idónea, empleando los ocho futuros agrícolas de interés y el precio del aguacate promedio calculados con las metas 2 y 3 previas. 
+**Respuesta al logro de esta meta:** Esta meta se logró de manera paralela con las metas 1 a 3 previas. Para poder publicar los resultados, así como para poder tener una aplicación en línea y el repositorio del observatorio, fue necesario programar múltiples funciones en r y python para las obtención y procesaiento de datos. Un ejemplo de estos códigos de programación se logra apreciar en el repositorio de la **paquetería sniimap** de Python [en el repositorio piPy sniimapp](https://pypi.org/project/sniimapp/) en el que ha sido publicada.
 
 - Meta 5: Desarrollar aplicaciones en línea que permitan publicar los resultados actualizados en el sitio web personal del Dr. Oscar De la Torre Torres. Esto para su acceso gratuito por parte de la comunidad científica y profesional interesada en los temas. 
-
+**Respuesta al logro de esta meta:** Las aplicaciones se pueden consultar en las siguientes ligas:
+  - [applicación de las simulaciones de la cobertura del precio del aguacate](https://www.oscardelatorretorres.com/coberturaprecioaguacateicti2024)
+  - [observatorio de inteligencia de mercado de la Facultad de Contaduría y Ciencias Administrativas de la UMSNH](https://app1.observatorio-fcca-umich.com/web/login). Favor de utilizar el correo odelatorre\@umich.mx y el password UMSNH2024 para acceder a la plataforma.
 
 - Meta 6: Publicar los resultados de las simulaciones realizadas ante la comunidad científica afín a los agronegocios y a la Administración financiera. Esto implica publicación en artículos de revistas científicas, así como participaciones en ponencias de congresos de investigación (incluyendo el congreso regional de investigación del ICTI en 2024).
+**Respuesta al logro de esta meta:** Se tiene las siguientes ponencias ya sea aceptadas presentadas o en proceso de aceptarse por parte del ICTI.
 
+  - Ponencia [Hedging Mexican Hass avocado price with exchange-traded agricultural futures](https://www.dropbox.com/scl/fi/xs9jhw1b4jsn183vst4g4/01ponenciaCiefar2024.pdf?rlkey=seum9nf99y0qbt4848csp83zw&dl=0) presentada el 30 de agosto del 2024 en el [Congreso Internacional de Economía Financiera y Administración de Riesgos (CIEFAR)](https://www.economicas.unam.mx/actividades/ciefar-2024)
+  - Ponencia [Hedging Mexican Hass avocado price with exchange-traded agricultural futures](https://www.dropbox.com/scl/fi/3l0nyygkpokn2kpezzo4j/04RegistroPonencia19CECTI00622024.pdf?rlkey=3yeo7j0xrx2imxed2ymu7ooq5&dl=0) en proceso de ser aceptada en el [19º Congreso Estatal de Ciencia, Tecnología e Innovación organizado por el ICTI](https://icti.michoacan.gob.mx/19-cecti/)
+  - Ponencia [Hedging Mexican Hass avocado price with exchange-traded agricultural futures](https://www.dropbox.com/scl/fi/kqa3ij1nhseerj49zhil4/03PonenciaRIICO2024EnRevision.pdf?rlkey=1hyrd7eusg8ejrjh0f8jm5uxp&dl=0) en proceso de aceptación en el [XVIII Congreso de la red internacional de investigadores en competitividad](http://riico.org/call-for-paper/)
+  - Ponencia [Determinación de la cobertura óptima del precio promedio del aguacate Hass con futuros de las bolsas de derivados de Chicago y Nueva York](https://www.dropbox.com/scl/fi/jnnglui1qmmz4af7ap5au/02PonenciaFCCAUMSNH2024Aceptada.pdf?rlkey=bbyuat4xnsmzx3db5esabizjf&dl=0) aceptada pra presentarse en el [XV Congreso Internacional de Contaduría, Administración, Mercadotecnia e Informática administrativa](https://conferencia.fcca.umich.mx/micrositio/Congreso2024/) a presentarse el día 27 de septiembre del 2024.
 
 # Entregables comprometidos{#Entregables}
 
 Como resultado de los objetivos planteados en el presente proyecto de investigación, así como de las metas que de los mismos surgen, se presentan los siguientes entregables:
 
-1. Publicación de al menos un artículo en una revista científica indizada en Scopus o la Web of Science. El compromiso, dados los tiempos de financiamiento del proyecto, es tener en proceso de revisión o, preferentemente aceptado, el artículo. Para lograr esto, es que se planteará el publicar el artículo en alguna revista académica indizada a Scopus o la Web of Science que opere en el esquema de *open access*. Esto permitirá que los tiempos de revisión y editoriales sean más cortos. Ante esto, como se verá en el apartado del [desglose financiero](#Desglose), se contempla el pago de una publicación de un artículo.
-2. La publicación y actualización periódica de los resultados de las simulaciones en una aplicación en línea en el sitio web del Dr. Oscar De la Torre Torres. Esto requerirá, como se verá en el [desglose financiero](#Desglose), del financiamiento de algunas instancias de servidores en nube, así como la contratación de servicios de bases de datos financieras y de APIS de noticias y redes sociales que permitan extraer la información financiera y de noticias.
+1. Publicación de al menos un artículo en una revista científica indizada en Scopus o la Web of Science. El compromiso, dados los tiempos de financiamiento del proyecto, es tener en proceso de revisión o, preferentemente aceptado, el artículo. Para lograr esto, es que se planteará el publicar el artículo en alguna revista académica indizada a Scopus o la Web of Science que opere en el esquema de *open access*. 
+
+**Entregable logrado:** Se tiene en proceso de aceptación el artículo de investigación titulado **Non-commodity agricultural price hedging with minimum tracking error portfolios: the case of Mexican Hass avocado** a ser publicado en la [revista Agriculture](https://www.mdpi.com/journal/agriculture) que es factor de impacto 3.3. y Q1 del JCR. La evidencia de este atículo y su proceso de futura aceptación se puede [consultar en esta liga](https://www.dropbox.com/scl/fi/lbjs2njhx48skeroxkyrs/01ArticuloProximoAPublicar.pdf?rlkey=smh2th9oaorhmoplbsze71eqn&dl=0). En el archivo \*.pdf se adjunta la siguiente evidencia:
+
+  - Copia del archivo \*.pdf del artículo de investigación.
+  - Copia de la impresión del sistema editorial que permite demostrar los cambios menores (*minor revision*) que se piden para que el trabajo sea publicado.
+  - Copia del correo electrónico en donde se recibe, por parte del sistema editorial, la nueva versión del artículo próximo a aceptarse.
+  - Copia del sitio web de la revista Agriculture en la que se muestra que la revista es factor de impacto 3.3. y Q1 del JCR.
+  - Evidencia del índice de la revista.
+
+**NOTA A ESTE ENTREGABLE: Dado que este artículo científico se encuentra en proceso de aceptación y los tiempos de entrega de resultados no me permitieron presentar la versión final en línea, me comprometo a, una vez en línea el citado artículo, entregar el producto final con un oficio adicional y posterior al presente informe. Esto con la finalidad de cumplir con este producto de manera total y no tener ningún pendiente con el ICTI a este respecto.**
+
+2. La publicación y actualización periódica de los resultados de las simulaciones en una aplicación en línea en el sitio web del Dr. Oscar De la Torre Torres. 
+
+**Entregable logrado:** Se pide se consulten las siguientes ligas para consultar la aplicación web de las simulaciones, así como la de la aplicación del repositorio y observatorio de mercados:
+
+  - [applicación de las simulaciones de la cobertura del precio del aguacate](https://www.oscardelatorretorres.com/coberturaprecioaguacateicti2024)
+  - [observatorio de inteligencia de mercado de la Facultad de Contaduría y Ciencias Administrativas de la UMSNH](https://app1.observatorio-fcca-umich.com/web/login). Favor de utilizar el correo odelatorre\@umich.mx y el password UMSNH2024 para acceder a la plataforma.
+
 3. El desarrollo y publicación de una función en R y una en Python que permita acceder a los precios históricos de las principales frutas y hortalizas monitoreadas por el SNIIM. Actualmente el SNIIM solo funciona con una interfaz visual en su sitio web. Con este entregable se pretende que exista una función que permita a más investigadoras e investigadores acceder fácilmente a las bases de datos del SNIIM con esta función. El objetivo es publicarla como una función de fuente abierta y acceso gratuito. La misma se publicará en los repositorios de GitHub y de PyPI.
+
+**Entregable logrado:** Se pide se consulten las siguientes ligas para consultar el repositorio de piPy en donde se publica la función para recolección de datos del SNIIM:
+
+  - [repositorio de la función de recolección de datos del SNIIM en piPy](https://pypi.org/project/sniimapp/)
+
 4. El apoyo al desarrollo de 2 tesis de doctorado. Actualmente se tienen en curso 2 tesis de doctorado que buscan relacionar el sentimiento negativo y positivo en las noticias y redes sociales con los precios del maíz y del café. Esto para desarrollar algoritmos de coberturas de estas mercancías con opciones de las bolsas de Chicago y Nueva York. Es decir, desarrollar algoritmos que permitan a SEGALMEX y a los productores o comercializadores de aguacate determinar los momentos de cobertura necesarios. Por los tiempos de duración del proyecto de investigación propuesto, no se logrará la titulación de alguna de estas 2 tesis doctorales, debido a que los 2 sustentantes les falta 1.5 y 3.5 años para terminar su tesis y plan de estudios en el [Doctorado en Administración de la Facultad de Contadudía y Ciencias Administrativas de la UMSNH](https://www.fcca.umich.mx/doctorado/). A pesar de esto, el presente proyecto apoyará a los requerimientos de infraestructura informática para el logro de resultados en estas dos tesis de investigación:
 
   - **Factores de índices de sentimiento de mercado que inciden en la estimación de precios de referencia del maíz blanco en México y su cobertura con opciones de la Bolsa de derivados de Chicago a través de un algoritmo de toma de decisiones con precios de garantía de SEGALMEX**. Sustentante: M.C. Rodolfo Adrían López Torres (Doctorado en Administración FCCA-UMSNH). Generación 2021-2025.
   - **Factores de índices de sentimiento de mercado que inciden en la estimación de precios del precio nacional del Café y su cobertura con opciones de la Bolsa de derivados de Chicago. Una propuesta de algoritmo de coberturas para SEGALMEX**. Sustentante: M.A. Francisco Xavier Martínez Medina (Doctorado en Administración FCCA-UMSNH). Generación 2023-2027.
+  
+  En esta liga se puede consultar la constancia expedida por la coordinadora del Doctorado en Administración de la FCCA-UMSNH, la Dra. Irma Cristina Espitia Moreno, en la que se acredita que el Dr. Oscar V. De la Torre Torres es el director de tesis de los dos sustentantes previamente mencionados.
 
 5. Ponencias en al menos 2 congresos de investigación. Se plantea que se expongan los resultados logrados en al menos 2 congresos de investigación, siendo uno de ellos el 19º Congreso Estatal de Ciencia, Tecnología e Innovación organizado por el ICTI.
 
-## Infraestructura informática lograda con el financiamiento del proyecto
+Se tienen las siguientes ponencias presentadas o por presentar:
+
+- Ponencia [Hedging Mexican Hass avocado price with exchange-traded agricultural futures](https://www.dropbox.com/scl/fi/xs9jhw1b4jsn183vst4g4/01ponenciaCiefar2024.pdf?rlkey=seum9nf99y0qbt4848csp83zw&dl=0) presentada el 30 de agosto del 2024 en el [Congreso Internacional de Economía Financiera y Administración de Riesgos (CIEFAR)](https://www.economicas.unam.mx/actividades/ciefar-2024)
+- Ponencia [Hedging Mexican Hass avocado price with exchange-traded agricultural futures](https://www.dropbox.com/scl/fi/3l0nyygkpokn2kpezzo4j/04RegistroPonencia19CECTI00622024.pdf?rlkey=3yeo7j0xrx2imxed2ymu7ooq5&dl=0) en proceso de ser aceptada en el [19º Congreso Estatal de Ciencia, Tecnología e Innovación organizado por el ICTI](https://icti.michoacan.gob.mx/19-cecti/)
+- Ponencia [Hedging Mexican Hass avocado price with exchange-traded agricultural futures](https://www.dropbox.com/scl/fi/kqa3ij1nhseerj49zhil4/03PonenciaRIICO2024EnRevision.pdf?rlkey=1hyrd7eusg8ejrjh0f8jm5uxp&dl=0) en proceso de aceptación en el [XVIII Congreso de la red internacional de investigadores en competitividad](http://riico.org/call-for-paper/)
+- Ponencia [Determinación de la cobertura óptima del precio promedio del aguacate Hass con futuros de las bolsas de derivados de Chicago y Nueva York](https://www.dropbox.com/scl/fi/jnnglui1qmmz4af7ap5au/02PonenciaFCCAUMSNH2024Aceptada.pdf?rlkey=bbyuat4xnsmzx3db5esabizjf&dl=0) aceptada pra presentarse en el [XV Congreso Internacional de Contaduría, Administración, Mercadotecnia e Informática administrativa](https://conferencia.fcca.umich.mx/micrositio/Congreso2024/) a presentarse el día 27 de septiembre del 2024.
+
+# Infraestructura informática lograda con el financiamiento del proyecto
+
+## Infraestructura informática lograda con el financiemiento del proyecto
+
+1. Contratación de la nube de servicios de Digital Server para el hospedaje de los códigos de simulación, bases de datos en nube (SQL) con información de precios agrícolas y el observatorio de inteligencia de mercado.
+2. Contratación de una licencia anual en el servicio shinyapps para presentar los dashboards y aplicaciones en línea con los resultados de la cobertura del precio del aguacate, empleando futuros agrícolas del CME y el NYMEX.
+3. Contratación de una licencia anual de las bases de datos de Economática para obtener precios de futuros agrículas de las bolsas de mercancías de Brasil.
+4. Contratación de una licencia anual de las bases de datos de Refinitiv para obtener precios de futuros agrículas de las bolsas de futuros de Chicago y Nueva York.
+
+## Infraestructura actual en la UMSNH para continuar con los esfuerzos financiados con el proyecto
 
 1. Computadora Mac Pro con procesador Intel Xeon de 3.5 GHz y 6 núcleos, 16 GB de memoria RAM, tarjeta gráfica AMD FirePro de 3GB y 120GB de disco duro en estado sólido. Esta computadora es la que se utiliza para hacer la parte más larga y amplia de las simulaciones de este proyecto de investigación y otros que le han antecedido. Los resultados de las simulaciones realizadas con esta computadora se actualizan, de manera diaria, en la siguiente computadora.
 2. Computadora iMac con procesador Intel Core de 1.5 GHz y 2 núcleos, 18 GB de memoria RAM, tarjeta gráfica Intel Graphics de 3de 1.5 GB y 120GB de disco duro en estado sólido. Esta computadora es la que actualizará, de manera diaria o mensual (Según sea el caso) los datos de las simulaciones del presente proyecto.
 3. Lenguajes de programación R y Python executados tanto en Rstudio como en Jupiter Networks. Esto para programar y ejecutar los CRONES que, de manera automática, actualizan las simulaciones realizadas.
 4. Una licencia de Shiny apps para la publicación de las aplicaciones interactivas en línea con los resultados de las simulaciones previas. Esta se paga actualmente con recursos propios del Dr. Oscar V. De la Torre Torres (la CIC de la UMSNH actualmente no le puede apoyar con este rubro al cambiar las reglas de operación federales, relativas a los recursos financieros de los proyectos de la CIC) y se pretende financiar las mismas con recursos del presente proyecto.
 5. Una licencia de las bases de datos económicos, financieras y de futuros Refinitiv Eikon y Economatica que actualmente paga el Dr. Oscar V. De la Torre Torres con recursos propios (la CIC de la UMSNH actualmente no le puede apoyar con este rubro al cambiar las reglas de operación federales, relativas a los recursos financieros de los proyectos de la CIC). Se pretende financiar estas bases de datos con los recursos del presente proyecto de investigación.
+
+La infraestructura informática actual en la UMSNH se puede consultar en la siguiente figura:
+
+```{r figura3, echo=FALSE, out.width="90%", fig.align = 'center', fig.cap="Arquitectura informática para las simulaciones a realizar"}
+knitr::include_graphics("logicaSimuladores.png")
+
+```
+
+# Consideraciones finales
+
+Para cerrar este informe de actividades, entregables y metas logrados en el presente proyecto de investigación, deseo reiterar mi sincero y profundo agradecimiento a usted y al Instituto de Ciencia, Tecnología e Innovación del Estado de Michoacán (ICTI) por el apoyo brindado para el desarrollo del mismo.
+
+Con su valioso apoyo, se lograron los primeros resultados que permitirían utilizar valores de mercados financieros en pro de la seguridad alimentaria y la estabilidad de los ingresos de los productores y comercializadores de aguacate en Michoacán. 
+
+Debido a que la UMSNH tiene reglas de ejercicio de gasto para financiar proyectos de investigación, muchos rubros que se financiaron con este proyecto pudieron extender mis trabajos de investigación en esta línea. Por lo que, a pesar de que el proyecto de investigación concluye, los trabajos de investigación en esta línea continuarán con su futuro y amable apoyo en otras convocatorias de financiamiento, así como con el apoyo de la UMSNH.
+
+Deseo resaltar que el presente proyecto fue concurrente con el proyecto CIC-UMSNH-18178, financiado por la CIC de la UMSNH. El objetivo de mis futuros esfuerzos de investigación se enfocarán en extender las pruebas a más productos agrícolas de Michoacán y al desarrollo de más y mejores algoritmos con técnicas econométricas y de inteligencia artificial.
+
+
+**Dr. Oscar V. De la Torre Torres** 
+
+**Facultad de Contaduría y Ciencias Administrativas**
+
+**Universidad Michoacana de San Nicolás de Hidalgo**
+
+# Referencias citadas en el informe

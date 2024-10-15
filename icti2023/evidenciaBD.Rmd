@@ -1,5 +1,5 @@
 ---
-title: Evidencia de bases de Datos
+title: Evidencia de bases de Datos y repositorios en GitHub
 author: |
   | Dr. Oscar V. De la Torre Torres
   | Facultad de Contaduría y Ciencias Administrativas 
@@ -16,12 +16,12 @@ header-includes: |
     \usepackage{rotating}
     \fancyfoot[LE,RO]{Página: \thepage}
 output:
+  bookdown::pdf_document2:
+    toc: no
   bookdown::html_document2:
     toc: yes
     toc_depth: 5
     toc_float: TRUE
-  bookdown::pdf_document2:
-    toc: no
   html_document:
     toc: yes
     toc_depth: 5
@@ -52,7 +52,7 @@ library(forcats)
 ```
 
 \begin{center}
-\textbf{1 página de lectura a continuación}
+\textbf{2 páginas de lectura a continuación}
 \end{center}
 
 ```{r logo1, echo=FALSE, out.width="20%", fig.align = 'center'}
@@ -76,9 +76,31 @@ Estimada Dra. Alejandra Ochoa Zarzosa,
 
 En las siguientes ligas, podrá encontrar la evidencia (en línea) de las bases de datos compiladas y creadas ya sea en aplicaciones web o en el observatorio de inteligencia de mercado que se logró con el financiamiento del proyecto de investigación científica ICTI-PICIR-2023-00086 "Algoritmo para la cobertura del precio nacional del aguacate Hass producido en el Estado de Michoacán por medio coberturas agrícolas de las Bolsas de mercancías de Chicago y Nueva York provistas por SEGALMEX".
 
+## Liga URL de la aplicación web de la cobertura del precio del aguacate
+
+Se presenta el avance de esta aplicación en línea. La misma forma parte de los entregables comprometidos en la propuesta de proyecto y, a pesar de entregarse este avance en el proyecto, seguirá desarrollándose la misma. 
+
+Esta aplicación web estará disponible de forma gratuita para la comunidad académica y empresarial interesada en la cobertura del precio del aguacate. **Nota:** En la misma se cita el patrocinio del ICTI para su desarrollo.
+
   - [Applicación de las simulaciones de la cobertura del precio del aguacate](https://www.oscardelatorretorres.com/coberturaprecioaguacateicti2024)
+  
+El siguiente observatorio se ha desarrollado para recopilar los precios de frutas, hortalizar, así como semillas. Esto para dejar estos datos de disponibilidad para la comunidad académica y empresarial interesada en el análisis de precios de estos productos.
+
+**Nota:** Para acceder a la misma se debe proporcionar el usuario **icti2024** y el password *icti2024**.
+
   - [Observatorio de inteligencia de mercado de la Facultad de Contaduría y Ciencias Administrativas de la UMSNH](https://app1.observatorio-fcca-umich.com/web/login). Favor de utilizar el correo odelatorre\@umich.mx y el password UMSNH2024 para acceder a la plataforma.
 
+## Repositorio de Github para descargar precios de futuros en la computadora utilizando R
+
+Este repositorio de GitHub contiene la función que permite descargar los precios de futuros de los productos agrícolas de la Bolsa de Mercancías de Chicago y Nueva York. Para esto, la o el usuario final debe tener instalado R para poder descargar los datos deseados en su computadora. Esta función y su publicación en línea forma parte de los entregables comprometidos.
+
+  - [Repositorio de GitHub para descargar precios de futuros en la computadora utilizando R](https://github.com/OscarVDelatorreTorres/yahooFinance)
+
+## Repositorio de piPy con la función que permite descargar los datos de frutas, hortalizas y semillas desde el observatorio de inteligencia de mercado a la computadora del usuario final.
+
+Esta función que se publicó en este repositorio de piPy permite descargar los datos de frutas, hortalizas y semillas desde el observatorio de inteligencia de mercado a la computadora del usuario final. Para esto, la o el usuario final debe tener instalado python para pdoer descargar los datos deseados en su computadora. Esta función y su publicación en línea forma parte de los entregables comprometidos.
+
+  - [Repositorio de piPy](https://pypi.org/project/sniimapp/)
 
 **Dr. Oscar V. De la Torre Torres** 
 

@@ -1,0 +1,123 @@
+---
+title: Reporte de entregables faltantes en el proyecto
+author: |
+  | Dr. Oscar V. De la Torre Torres
+  | Facultad de Contaduría y Ciencias Administrativas 
+  | Universidad Michoacana de San Nicolás de Hidalgo
+  
+header-includes: |
+    \usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \lhead{}
+    \chead{Informe de resultados y complemento de entregables del proyecto de investigación científica ICTI-PICIR-2023-00086}
+    \rhead{}
+    \fancyfoot[CO,CE]{Dr. Oscar V. De la Torre Torres FCCA-UMSNH}
+    \renewcommand{\footrulewidth}{0.4pt}
+    \usepackage{rotating}
+    \fancyfoot[LE,RO]{Página: \thepage}
+output:
+  bookdown::pdf_document2:
+    toc: no
+  bookdown::html_document2:
+    toc: yes
+    toc_depth: 5
+    toc_float: TRUE
+  html_document:
+    toc: yes
+    toc_depth: 5
+  word_document:
+    toc: yes
+    toc_depth: '5'
+bibliography: icti2023.bib
+link-citations: yes
+citecolor: blue
+linkcolor: blue
+urlcolor: blue
+font: times new roman 
+csl: "contaduria-y-administracion-unam-esp.csl"
+lang: "Es-Es"
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+options(tinytex.verbose = TRUE)
+library(flextable)
+library(openxlsx)
+library(plotly)
+library(tibble)
+library(dplyr)
+library(bookdown)
+library(tidyr)
+library(plan)
+library(forcats)
+```
+
+
+```{r logo1, echo=FALSE, out.width="20%", fig.align = 'center'}
+knitr::include_graphics("picir.png")
+```
+
+```{r logo3, echo=FALSE, out.width="20%", fig.align = 'center'}
+knitr::include_graphics("umsnh100a.jpg")
+```
+
+\newpage 
+
+\setcounter{tocdepth}{6}
+\tableofcontents
+
+\newpage 
+
+# Presentación de este complemento de informe de entregables
+
+Apreciable Doctora Alejandra Ochoa Zarzosa, me acerco a Usted a efecto de remitir un complemento de informe de entregables faltantes en el proyecto de investigación científica ICTI-PICIR-2023-00086, que me fue asignado en calidad de investigador responsable.
+
+Las razones que fundamentan este informe es que, debido a las fechas de entrega del proeycto y los tiempos editoriales de la revista Agriculture he logrado dos productos adicionales comprometidos cuya evidencia no pude entregar en tiempo y forma en [mi informe técnico final entregado en agosto del año en curso](https://oscarvdelatorretorres.github.io/proyectosInvestigacion/icti2023/informe2024.html).
+
+Los productos entregables pendientes que ahora entrego son:
+
+1. Publicación de un artículo científico en revista indexada con factor de impacto.
+2. Presentación de una ponencia en el XVIV Congreso Estatal de Investigación Ciencia, Tecnología e Innovación del ICTI Michoacán.
+
+A continuación me permito presentar la evidencia de los entregables, así como la justificación de la entrega extemporánea de los mismos.
+
+## Publicación de un artículo científico en revista indexada con factor de impacto
+
+Se publicó el articulo titulado **"Non-Commodity Agricultural Price Hedging with Minimum Tracking Error Portfolios: The Case of Mexican Hass Avocado"** en la revista Agriculture. Esta es una revista **Cuartil 1** tanto de Scimago-Scopus como de JCR-Clarivate. El mismo fue **aceptado el 7 de septiembre del 2024** y el reconocimiento y la mención del financiamiento logrado con el proyecto ICTI-PCIR-000086 se hace en los agradecimientos del mismo, dando un reconocimiento internacional al mismo. Anexo al presente informe en su versión impresa, se anexa evidencia de la indización de la revista, la página legal de la misma y el contenido completo del artículo publicado. 
+
+En dicho artículo se presenta una de las primera pruebas de que **es viable el replicar el precio del aguacate Hass de primera calidad utilizando un portafolio de futuros del café y de la azúcar en un 94\%**, permitiendo esto futuras aplicaciones de cobertura del precio de dicha especie de aguacate por medio de entidaded financieras como SEGALMEX (el objetivo principal del proyecto financiado).
+
+La URL de consulta para dicho artículo (para la versión en línea de este informe) es [https://www.mdpi.com/2077-0472/14/10/1692](https://www.mdpi.com/2077-0472/14/10/1692).
+
+Espero con esto solventar a su entera satisfacción este entregable pendiente en mi proeycto de investigación.
+
+## Presentación de una ponencia en el XVIV Congreso Estatal de Investigación Ciencia, Tecnología e Innovación del ICTI Michoacán
+
+Se registró la ponencia número 19CECTI-0062 con el título **"Cobertura sintética del precio promedio nacional del aguacate Hass mexicano con un portafolio de futuros agrícolas"**. La presentación de la misma [la puede encontrar en línea en esta liga](https://oscarvdelatorretorres.github.io/ponencias/cecti2024/#/title-slide) y una copia impresa de la misma se entrega en el formato impreso de este informe.
+
+Esta ponencia **fue aceptada para su publicación** pero, por cuestiones presonales no tuve posibilidad de asistir a presentarla en el XVIV CECTI.
+
+Sin embargo, la misma fue presentada en 2 congresos de investigación. Anexo a la versión impresa de este informe, me permito anexar tanto la constancia de presentación como el programa de los eventos y la presentación cuyas URL de consulta en su versión digital las puede encontrar en e siguiente detalle de ponencias:
+
+
+1. Ponencia titulada **"Hedging Mexican Hass avocado price with exchange-traded agricultural futures"**, presentada en la tercera edición del Congreso Internacional de Economía Financiera y Administración de Riesgos (CIEFAR), celebrado los días 29 y 30 de agosto del 2024 en las instalaciones del Instituto de Investigaciones Económicas de la UNAM. Anexo al presente se entrega la carta de aceptación, constancia de ponencia impartida y el programa del evento. La presentación se encuentra disponible en [https://oscarvdelatorretorres.github.io/ponencias/ciefar2024](https://oscarvdelatorretorres.github.io/ponencias/ciefar2024/).
+2. Ponencia titulada **""Cobertura sintética del precio promedio nacional del aguacate Hass mexicano con un portafolio de futuros agrícolas""**, presentada en el XV Congreso Internacional de Contaduría, Administración, Mercadotecnia e informática Administrativa de la Facultad de Contaduría y Ciencias administrativas de la UMSNH. Anexo al presente informe se entrega la carta de aceptación, constancia de ponencia impartida y el programa del evento. La presentación se encuentra disponible en [https://oscarvdelatorretorres.github.io/ponencias/fccca2024](https://oscarvdelatorretorres.github.io/ponencias/fccca2024).
+
+
+### Ponencias y conferencias por invitación futuras ya aceptadas
+
+Adicional a estas 2 ponencias, se tiene aceptada otra ponencia en el **XVIII congreso internacional de investigadores en competitividad**, titulada **"Hedging
+Mexican Hass avocado price with exchange-traded agricultural futures"**, a presentarse el próximo 6 a 8 de noviembre del 2024. Se anexa carta de aceptación en la versión impresa de este informe.
+
+Finalmente se tiene una invitación a impartir una cátedra magistral en el **Octavo congreso internacional emprende inova UG**. Esto será el día 16 de octubre del 2025. Se anexa copia de la carta de invitación.
+
+
+# Consideraciones finales al informe complementario
+
+Espero con este detalle de artículo y ponencias impartidas haber cumplido las expectativas del Instituto de Ciencia, Tecnología e Innocavió (ICTI) que honrosamente dirige.
+
+Es para mi un gusto haber sido distinguido con el financiamiento del proyecto ICTI-PICIR-00086 y espero contar con su apoyo futuro. Aún existen muchas preguntas científicas y tecnológicas por resolver para, de ser el caso, lograr la exisota implementación de estos algoritmos de toma de decisiones para la cobertura de productos de consumo frecuente como son el aguacate, el limón, la zarzamora y el melón.
+
+Productos que tienen un impacto económico y social importante en Nuestro Estado.
+
+
+Dr. OScar

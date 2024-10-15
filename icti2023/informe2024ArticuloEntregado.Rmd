@@ -17,12 +17,12 @@ header-includes: |
     \usepackage{rotating}
     \fancyfoot[LE,RO]{Página: \thepage}
 output:
-  bookdown::pdf_document2:
-    toc: no
   bookdown::html_document2:
     toc: yes
     toc_depth: 5
     toc_float: TRUE
+  bookdown::pdf_document2:
+    toc: no
   html_document:
     toc: yes
     toc_depth: 5
